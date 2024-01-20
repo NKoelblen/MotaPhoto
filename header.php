@@ -39,5 +39,6 @@
             );
             ?>
         </nav><!-- #site-navigation -->
+        <?php get_template_part( 'template-parts/contact' ); ?>
     </header><!-- #masthead -->
 	<main id="main" class="site-main">
