@@ -17,20 +17,16 @@
 <!-- body_class() = class="page page-id-2 page-parent page-template-default logged-in" -->
 <body <?php body_class(); ?>>
     <header id="masthead" class="site-header">
-        <div class="site-logo">
-		
-        </div>
+        <img class="site-logo" src="<?= get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo">
         <nav id="site-navigation" class="primary-navigation">
-            <div class="menu-button-container">
                 <button id="primary-mobile-menu" class="button" aria-controls="primary-menu-list" aria-expanded="false">
                     <span class="dropdown-icon open">
-    
+                        <img src="<?= get_template_directory_uri() . '/assets/images/menu_open.png'; ?> " alt="ouvrir le menu">
                     </span>
                     <span class="dropdown-icon close">
-                        
+                        <img src="<?= get_template_directory_uri() . '/assets/images/menu_close.png'; ?> " alt="fermer le menu">
                     </span>
                 </button><!-- #primary-mobile-menu -->
-            </div><!-- .menu-button-container -->
             <?php
             wp_nav_menu(
                 array(

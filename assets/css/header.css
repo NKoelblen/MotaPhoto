@@ -1,0 +1,16 @@
+@media screen and (min-width: 375px) {
+    #primary-mobile-menu {
+        display: none;
+    }
+}
+@media screen and (max-width: 375px) {
+    #primary-mobile-menu {
+        display: block;
+    }
+    #primary-mobile-menu .dropdown-icon.close {
+        display: none;
+    }
+    #primary-menu-list {
+        display: none;
+    }
+}
