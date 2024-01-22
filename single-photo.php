@@ -60,7 +60,30 @@ while ( have_posts() ) :
     </article>
     <section class="related-photos-container">
         <h2>Vous aimerez aussi</h2>
-        <?php get_template_part( 'template-parts/photos-loop' ); ?>
+        <?php $photos_args = [
+            'post_type' => 'photo',
+            'post_status' => 'published',
+            'post__not_in' => [get_the_ID()],
+            'orderby' => 'rand',
+            'posts_per_page' => '2',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'photo-categorie',
+                    'field' => 'slug',
+                    'terms' => $categories_names,
+                ]
+            ]
+        ];
+        $photos_loop = new WP_Query( $photos_args );
+        if ( $photos_loop->have_posts() ) : ?>
+            <div class="related-photos-wrapper">
+                <?php while ( $photos_loop->have_posts() ) :
+                    $photos_loop->the_post();
+                    get_template_part( 'template-parts/photos-loop' );
+                endwhile;
+                wp_reset_postdata(); ?>
+            </div>
+        <?php endif; ?>
     </section>
 
 <?php endwhile; // End of the loop.

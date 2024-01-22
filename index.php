@@ -65,8 +65,35 @@ get_header(); ?>
 				<option value="ASC">à partir des plus anciennes</option>
 			</select>
 		</form>
-        <?php get_template_part( 'template-parts/photos-loop' ); ?>
-		<button>Charger plus</button>
+        <?php $photos_args = [
+			'post_type' => 'photo',
+			'post_status' => 'published',
+			'orderby' => 'date',
+			'order' => 'ASC',
+			'posts_per_page' => '8'
+		];
+		$photos_loop = new WP_Query( $photos_args );
+		if ( $photos_loop->have_posts() ) : ?>
+    		<div class="photos-wrapper">
+        	<?php while ( $photos_loop->have_posts() ) :
+            	$photos_loop->the_post();
+				get_template_part( 'template-parts/photos-loop' );
+        	endwhile;
+        	wp_reset_postdata(); ?>
+    		</div>
+		<?php endif;
+		global $photos_loop;
+		if( 1 < $photos_loop->max_num_pages ) : ?>
+    		<button
+	    		class="js-loadmore-photos"
+				data-max-page="<?= $photos_loop->max_num_pages ?>"
+        		data-nonce="<?= wp_create_nonce('loadmore_photos'); ?>"
+        		data-action="loadmore_photos"
+        		data-ajaxurl="<?= admin_url( 'admin-ajax.php' ); ?>"
+    		>
+        		Charger plus
+    		</button>
+		<?php endif; ?>
 	</section>
 <?php endif; ?>
 
