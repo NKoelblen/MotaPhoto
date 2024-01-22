@@ -15,14 +15,11 @@
             const data = {
                 action: $(this).data('action'), 
                 nonce:  $(this).data('nonce'),
+                query: JSON.stringify($(this).data('query-args')),
                 currentPage: currentPage++,
                 maxPage: $(this).data('max-page'),
             }
             data['currentPage']++
-
-            // Pour vérifier qu'on a bien récupéré les données
-            console.log(ajaxurl);
-            console.log(data);
 
             // Requête Ajax en JS natif via Fetch
             fetch(ajaxurl, {
@@ -35,7 +32,6 @@
             })
             .then(response => response.json())
             .then(body => {
-                console.log(body);
 
                 // En cas d'erreur
                 if (!body.success) {

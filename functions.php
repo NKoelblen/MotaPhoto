@@ -70,14 +70,8 @@ function loadmore_photos() {
     endif;
 
   	// Requête des photos
-    $photos_args = [
-        'post_type' => 'photo',
-        'post_status' => 'published',
-        'orderby' => 'date',
-        'order' => 'ASC',
-        'posts_per_page' => '8',
-        'paged' => $_POST['currentPage'],
-    ];
+    $photos_args = json_decode(stripslashes($_POST[ 'query' ]), true);
+    $photos_args['paged'] = $_POST['currentPage'];
     $photos_loop = new WP_Query( $photos_args );
 
   	// Préparer le HTML des photos
@@ -149,6 +143,6 @@ function photos_filter() {
             get_template_part( 'template-parts/photos-loop' );
         endwhile;
         wp_reset_postdata();
-        wp_send_json_success(ob_get_clean()); // Envoyer les données au navigateur
+        wp_send_json_success([ob_get_clean(), $photos_loop->max_num_pages, $photos_loop->query]); // Envoyer les données au navigateur
     endif;	
 }

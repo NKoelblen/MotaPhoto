@@ -84,10 +84,10 @@ get_header(); ?>
         	wp_reset_postdata(); ?>
     		</div>
 		<?php endif;
-		global $photos_loop;
 		if( 1 < $photos_loop->max_num_pages ) : ?>
     		<button
 	    		class="js-loadmore-photos"
+				data-query-args='<?= json_encode($photos_loop->query) ?>'
 				data-max-page="<?= $photos_loop->max_num_pages ?>"
         		data-nonce="<?= wp_create_nonce('loadmore_photos'); ?>"
         		data-action="loadmore_photos"
