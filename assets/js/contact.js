@@ -12,3 +12,9 @@ document.addEventListener("click", function(event) {
         contactContainer.style.setProperty('display', 'none', 'important');
     }
 })
+
+if (document.querySelector('#reference')) {
+    document.getElementsByName("photo").forEach(input => {
+        input.setAttribute('value', document.querySelector('#reference').innerHTML);
+    })
+}
