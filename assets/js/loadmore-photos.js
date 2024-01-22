@@ -3,7 +3,7 @@
 
         let currentPage = 1;
 
-        // Chargment des commentaires en Ajax
+        // Chargment des photos en Ajax
         $('.js-loadmore-photos').click(function (e) {
 
             // Empêcher l'envoi classique du formulaire

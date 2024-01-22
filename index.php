@@ -28,7 +28,9 @@ get_header(); ?>
 		<h1 class="page-title">Photograph event</h1>
 	</header><!-- .page-header -->
     <section class="photos-container">
-		<form>
+		<form action="<?php echo admin_url( 'admin-ajax.php' ); ?>" method="post" id="js-photos-filter">
+			<input type="hidden" name="nonce" value="<?php echo wp_create_nonce( 'photos_filter' ); ?>"> 
+        	<input type="hidden" name="action" value="photos_filter">
 			<?php $categories = get_terms(
 				[
 					'taxonomy' => 'photo-categorie',
@@ -37,7 +39,7 @@ get_header(); ?>
 					'hide_empty' => true,
 				]
 			); ?>
-			<select name="categories" id="categories">
+			<select name="category" id="category">
 				<option value="">Catégories</option>
 				<option value=""></option>
 				<?php foreach($categories as $category) : ?>
@@ -52,19 +54,19 @@ get_header(); ?>
 					'hide_empty' => true,
 				]
 			); ?>
-			<select name="formats" id="formats">
+			<select name="format" id="format">
 				<option value="">Formats</option>
 				<option value=""></option>
 				<?php foreach($formats as $format) : ?>
 					<option value="<?= $format->slug; ?>"><?= $format->name; ?></option>
 				<?php endforeach; ?>
 			</select>
-			<select name="tri" id="tri">
-				<option value="">Trier par date</option>
+			<select name="sort" id="sort">
+				<option value="">Trier par dates</option>
 				<option value="DSC">à partir des plus récentes</option>
 				<option value="ASC">à partir des plus anciennes</option>
 			</select>
-		</form>
+		</div>
         <?php $photos_args = [
 			'post_type' => 'photo',
 			'post_status' => 'published',
