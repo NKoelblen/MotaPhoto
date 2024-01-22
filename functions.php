@@ -38,7 +38,7 @@ register_nav_menus(
  */
 function add_items_to_nav_menu( $items, $args ) {
     if( $args->theme_location == 'primary' ){
-	    $items .= '<li><button class="contact-btn" aria-expanded="false">Contact</button></li>';
+	    $items .= '<li><button class="contact-btn">Contact</button></li>';
     }
     if( $args->theme_location == 'footer' ){
         $items .= '<li>Tous droits réservés</li>';
@@ -47,7 +47,7 @@ function add_items_to_nav_menu( $items, $args ) {
 }
 add_filter( 'wp_nav_menu_items', 'add_items_to_nav_menu', 10, 2 );
 
-/*
+/**
  * Enable support for Post Thumbnails on posts and pages
  */
 add_theme_support( 'post-thumbnails' );

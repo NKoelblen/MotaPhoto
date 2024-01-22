@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NMota main template file
  *
@@ -10,25 +11,63 @@
 
 get_header(); ?>
 
-<?php if ( is_home() && ! is_front_page() && ! empty( single_post_title( '', false ) ) ) : ?>
-	<header class="page-header alignwide">
-		<h1 class="page-title"><?php single_post_title(); ?></h1>
+<?php if (is_home() || is_front_page()) : ?>
+	<header class="page-header">
+		<?php $photos = new WP_Query( [
+    		'post_type' => 'photo',
+    		'orderby' => 'rand',
+    		'posts_per_page' => '1',
+		]);
+		if ( $photos->have_posts() ) :
+    		while ( $photos->have_posts() ) :
+        		$photos->the_post(); ?>
+            	<?php the_post_thumbnail( 'full' ); ?>
+			<?php endwhile;
+    		wp_reset_postdata();
+		endif; ?>
+		<h1 class="page-title">Photograph event</h1>
 	</header><!-- .page-header -->
+    <section class="photos-container">
+		<form>
+			<?php $categories = get_terms(
+				[
+					'taxonomy' => 'photo-categorie',
+					'orderby' => 'name',
+					'order' => 'ASC',
+					'hide_empty' => true,
+				]
+			); ?>
+			<select name="categories" id="categories">
+				<option value="">Catégories</option>
+				<option value=""></option>
+				<?php foreach($categories as $category) : ?>
+					<option value="<?= $category->slug; ?>"><?= $category->name; ?></option>
+				<?php endforeach; ?>
+			</select>
+			<?php $formats = get_terms(
+				[
+					'taxonomy' => 'format',
+					'orderby' => 'name',
+					'order' => 'ASC',
+					'hide_empty' => true,
+				]
+			); ?>
+			<select name="formats" id="formats">
+				<option value="">Formats</option>
+				<option value=""></option>
+				<?php foreach($formats as $format) : ?>
+					<option value="<?= $format->slug; ?>"><?= $format->name; ?></option>
+				<?php endforeach; ?>
+			</select>
+			<select name="tri" id="tri">
+				<option value="">Trier par date</option>
+				<option value="DSC">à partir des plus récentes</option>
+				<option value="ASC">à partir des plus anciennes</option>
+			</select>
+		</form>
+        <?php get_template_part( 'template-parts/photos-loop' ); ?>
+		<button>Charger plus</button>
+	</section>
 <?php endif; ?>
 
-<?php
-if ( have_posts() ) {
-
-	// Load posts loop.
-	while ( have_posts() ) {
-		the_post();
-
-	}
-
-} else {
-
-	// If no content, "No posts found"
-
-}
-
-get_footer();
+<?php get_footer();
