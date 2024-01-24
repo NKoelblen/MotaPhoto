@@ -2,10 +2,15 @@
     $(document).ready(function () {
 
         // Chargment des photos en Ajax
-        $( ".photos-wrapper" ).on( "click", ".js-lightbox", function( e ) {
+        $( ".photos-wrapper" ).on( "click", ".js-lightbox", function( e ) { // Event propagation
 
             // Empêcher l'envoi classique du formulaire
             e.preventDefault();
+
+            document.querySelector('#lightbox').style.setProperty('display', 'block');
+            $('#lightbox .close-btn').click( function() {
+                document.querySelector('#lightbox').style.setProperty('display', 'none');
+            })
 
             // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
             const ajaxurl = $(this).data('ajaxurl');
@@ -17,8 +22,6 @@
                 currentPhoto: $(this).data('current-photo'),
                 postsPerPage: $(this).data('posts-per-page'),
             }
-
-            console.log(data);
 
             // Requête Ajax
             fetch(ajaxurl, {
@@ -32,8 +35,6 @@
             .then(response => response.json())
             .then(body => {
 
-                console.log(body);
-
                 // En cas d'erreur
                 if (!body.success) {
                     alert(response.data);
@@ -46,7 +47,6 @@
                 let i = body.data['current-photo'];
                 $('#lightbox .photo').html(slides[i]['photo']);
                 $('#lightbox .informations').html(slides[i]['informations']);
-                
                 document.querySelectorAll("#lightbox .nav-link").forEach(navLink => {
                 	navLink.addEventListener("click", () => {
                 		if (navLink === document.querySelector("#lightbox .nav-previous")) {
@@ -58,7 +58,6 @@
                 			}
                 		}
                 		else if (navLink === document.querySelector("#lightbox .nav-next")) {
-                            console.log("slides : " + nbSlides);
                 			if (i === nbSlides - 1) {
                 				i = 0;
                 			} else {

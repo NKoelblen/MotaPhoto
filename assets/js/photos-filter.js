@@ -31,7 +31,6 @@
             })
             .then(response => response.json())
             .then(body => {
-                console.log(body);
 
                 // En cas d'erreur
                 if (!body.success) {

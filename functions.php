@@ -42,7 +42,7 @@ function theme_enqueue_styles()
 {
 	wp_enqueue_style( 'header-style', get_template_directory_uri() . '/assets/css/header.css', array(), '');
     wp_enqueue_style( 'contact-style', get_template_directory_uri() . '/assets/css/contact.css', array(), '');
-    wp_enqueue_style( 'ligthbox-style', get_template_directory_uri() . '/assets/css/ligthbox.css', array(), '');
+    wp_enqueue_style( 'test', get_template_directory_uri() . '/assets/css/lightbox.css', array(), '');
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
@@ -181,7 +181,7 @@ function lightbox() {
             $photos_loop->the_post();
             $i = $photos_loop->current_post;
                 ob_start();
-                the_post_thumbnail( 'large' );
+                the_post_thumbnail( 'full' );
                 $datas[$i]['photo'] = ob_get_clean();
                 ob_start(); ?>
                 <div class="informations">
