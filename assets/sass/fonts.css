@@ -1,13 +1,3 @@
-@charset "UTF-8";
-/*
-Theme Name: MotaPhotos
-Theme URI: 
-Author: 
-Author URI: 
-Description: Thème du site de Nathalie Mota
-Requires at least: WordPress 6.4
-Version: 1.0
-*/
 @font-face {
   font-family: "Poppins";
   src: url(./assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
@@ -69,31 +59,4 @@ body p, body span, body li, body a, body button, body input, body select {
 }
 body h1, body h2, body h3 {
   font-family: "Space Mono";
-}
-
-@media screen and (min-width: 375px) {
-  #primary-mobile-menu {
-    display: none;
-  }
-}
-@media screen and (max-width: 375px) {
-  #primary-mobile-menu {
-    display: block;
-  }
-  #primary-mobile-menu .dropdown-icon.close {
-    display: none;
-  }
-  #primary-menu-list {
-    display: none;
-  }
-}
-#contact-container {
-  display: none;
-}
-
-#lightbox {
-  display: none;
-}
-#lightbox .nav-link {
-  cursor: pointer;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=fonts.css.map */
