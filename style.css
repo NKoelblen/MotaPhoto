@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 Theme Name: MotaPhotos
 Theme URI: 
@@ -7,3 +8,29 @@ Description: Thème du site de Nathalie Mota
 Requires at least: WordPress 6.4
 Version: 1.0
 */
+#contact-container {
+  display: none;
+}
+
+@media screen and (min-width: 375px) {
+  #primary-mobile-menu {
+    display: none;
+  }
+}
+@media screen and (max-width: 375px) {
+  #primary-mobile-menu {
+    display: block;
+  }
+  #primary-mobile-menu .dropdown-icon.close {
+    display: none;
+  }
+  #primary-menu-list {
+    display: none;
+  }
+}
+#lightbox {
+  display: none;
+}
+#lightbox .nav-link {
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
