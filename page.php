@@ -1,6 +1,6 @@
 <?php
 /**
- * NMota template for displaying all single pages
+ * MotaPhotos template for displaying all single pages
  */
 
 get_header();

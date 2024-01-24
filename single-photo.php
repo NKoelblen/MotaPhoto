@@ -1,6 +1,6 @@
 <?php
 /**
- * NMota template for displaying all single photos
+ * MotaPhotos template for displaying all single photos
  */
 
 get_header();
@@ -45,10 +45,14 @@ while ( have_posts() ) :
                 <p>Cette photo vous intéresse ?</p>
                 <button class="contact-btn">Contact</button>
             </section>
-            <?php $next_photo = get_next_post();
-            $prev_photo = get_previous_post();
-            echo get_the_post_thumbnail($prev_photo->ID,'thumbnail', ['class' => 'preview-nav prev']);
-            echo get_the_post_thumbnail($next_photo->ID,'thumbnail', ['class' => 'preview-nav next']);
+            <?php $prev_photo = get_previous_post();
+            $next_photo = get_next_post();
+            if( $prev_photo) :
+                echo get_the_post_thumbnail($prev_photo->ID,'thumbnail', ['class' => 'preview-nav prev']);
+            endif;
+            if( $next_photo) :
+                echo get_the_post_thumbnail($next_photo->ID,'thumbnail', ['class' => 'preview-nav next']);
+            endif;
             the_post_navigation(
 		        [
 		        	'next_text' => '<img src="' . get_template_directory_uri() . '/assets/images/prev.svg" class="meta-nav" alt="accéder à la photo précédente">',

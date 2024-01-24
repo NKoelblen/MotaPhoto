@@ -1,33 +1,31 @@
 <?php
 /**
- * NModa template for displaying the footer
+ * MotaPhotos template for displaying the footer
  *
  * Contains the closing of the #content div and all content after.
  */
 
-?>
-    </main><!-- #main -->
-
-	<div id="lightbox">
-		<button class="close-btn">
-			<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-close.svg'; ?> " alt="fermer la visionneuse de photo">
-		</button>
-		<button class="nav-previous">
-			<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-prev.svg'; ?> " alt="photo précédente">
-			<span>Précédente</span>
-		</button>
-		<div class="photo-container">
-			<div class="photo"></div>
-			<div class="informations">
-				<h2 class="title"></h2>
-				<p class="categorie"></p>
+		global $photos_loop; ?>
+		<div id="lightbox">
+			<button class="close-btn">
+		    	<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-close.svg'; ?> " alt="fermer la visionneuse de photo">
+		    </button>
+		    <div class="nav-link nav-previous">
+		    	<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-prev.svg'; ?> " alt="photo précédente">
+		    	<span>Précédente</span>
+			</div>
+		    <div class="photo-container">
+				<div class="photo"></div>
+		    	<div class="informations"></div>
+		    </div>
+		    <div class="nav-link nav-next">
+		    	<span>Suivante</span>
+		    	<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-next.svg'; ?> " alt="photo suivante">
 			</div>
 		</div>
-		<button class="nav-next">
-			<span>Suivante</span>
-			<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-next.svg'; ?> " alt="photo suivante">
-		</button>
-	</div>
+    </main><!-- #main -->
+
+	<div id="lightbox"></div>
 
 	<footer id="colophon" class="site-footer">
 			<nav class="footer-navigation">

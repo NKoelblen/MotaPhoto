@@ -2,6 +2,7 @@
     $(document).ready(function () {
 
         let currentPage = 1;
+        const nonce = document.querySelector('.js-lightbox').getAttribute('data-nonce');
 
         // Chargment des photos en Ajax
         $('.js-loadmore-photos').click(function (e) {
@@ -42,10 +43,20 @@
                 // Et en cas de réussite
                 $('.photos-wrapper').append(body.data); // afficher le HTML
                 if ( data['currentPage'] === data['maxPage'] ) { 
-                    document.querySelector(".js-loadmore-photos").remove(); // if last page, remove the button
+                    document.querySelector(".js-loadmore-photos").style.setProperty('display', 'none'); // if last page, remove the button
                 }
-            });
-        });
+                let displayedPhotos = document.querySelectorAll('.single-photo').length;
+                let i = 0;
+                document.querySelectorAll(".js-lightbox").forEach(button => {
+                    button.setAttribute('data-nonce', nonce);
+                    button.setAttribute('data-query-args', data['query']);
+                    button.setAttribute('data-posts-per-page', displayedPhotos);
+                    button.setAttribute('data-current-photo', i);
+                    i++
+                })
+
+            })
+        })
         
-    });
+    })
 })(jQuery);

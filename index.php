@@ -1,7 +1,7 @@
 <?php
 
 /**
- * NMota main template file
+ * MotaPhotos main template file
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -63,10 +63,10 @@ get_header(); ?>
 			</select>
 			<select name="sort" id="sort">
 				<option value="">Trier par dates</option>
-				<option value="DSC">à partir des plus récentes</option>
+				<option value="DESC">à partir des plus récentes</option>
 				<option value="ASC">à partir des plus anciennes</option>
 			</select>
-		</div>
+		</form>
         <?php $photos_args = [
 			'post_type' => 'photo',
 			'post_status' => 'published',

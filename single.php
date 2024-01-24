@@ -1,6 +1,6 @@
 <?php
 /**
- * NMota template for displaying all single posts
+ * MotaPhotos template for displaying all single posts
  */
 
 get_header();

@@ -5,6 +5,7 @@
         const category = filterForm.querySelector( '#category' ) ;
         const format = filterForm.querySelector( '#format' ) ;
         const sort = filterForm.querySelector( '#sort' ) ;
+        const nonce = document.querySelector('.js-lightbox').getAttribute('data-nonce');
 
         function photosFilter() {
             // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
@@ -46,8 +47,17 @@
                     document.querySelector(".js-loadmore-photos").style.setProperty('display', 'none'); // if last page, remove the button
                 } else {
                     document.querySelector(".js-loadmore-photos").style.setProperty('display', 'inline-block');
-                    document.querySelector(".js-loadmore-photos").setAttribute('data-query-args', queryArgs)
+                    document.querySelector(".js-loadmore-photos").setAttribute('data-query-args', queryArgs);
                 }
+                let displayedPhotos = document.querySelectorAll('.single-photo').length;
+                let i = 0;
+                document.querySelectorAll(".js-lightbox").forEach(button => {
+                    button.setAttribute('data-nonce', nonce);
+                    button.setAttribute('data-query-args', queryArgs);
+                    button.setAttribute('data-posts-per-page', displayedPhotos);
+                    button.setAttribute('data-current-photo', i);
+                    i++
+                })
             });
         }
 

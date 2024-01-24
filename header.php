@@ -1,6 +1,6 @@
 <?php
 /**
- * NMota header.
+ * MotaPhotos header.
  *
  * This is the template that displays all of the <head> section and everything up until main.
  */

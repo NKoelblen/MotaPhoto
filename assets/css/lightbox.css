@@ -1,3 +1,6 @@
 #lightbox {
-    display: none;
+    /* display: none; */
+}
+#lightbox .nav-link {
+    cursor: pointer;
 }
