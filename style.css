@@ -71,6 +71,25 @@ body h1, body h2, body h3 {
   font-family: "Space Mono";
 }
 
+:root {
+  --red: #E00000;
+  --secondary-red: #FE5858;
+  --tertiary-red: #FFD6D6;
+  --dark-grey: #C4C4C4;
+  --medium-grey: #D8D8D8;
+  --light-grey: #E5E5E5;
+  --dark-blue: #313144;
+  --navbar: 80px;
+  --admin-bar: 46px;
+  --head-padding: 1em;
+  --mobile-break: 430px;
+}
+
+@media screen and (max-width: 430px) {
+  :root {
+    --navbar: 71.91px;
+  }
+}
 body {
   margin: 0 auto;
 }
@@ -84,14 +103,15 @@ button {
 }
 
 #masthead {
+  box-sizing: border-box;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: calc(80px - 2em);
+  min-height: var(--navbar);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: max(40px, 10.14vw);
-  padding: 1em clamp(40px, 10.14vw, 146px);
+  padding: var(--head-padding) clamp(40px, 10.14vw, 146px);
   box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
 }
 #masthead .site-logo {
@@ -116,7 +136,7 @@ button {
   white-space: nowrap;
 }
 #masthead #primary-menu-list a {
-  color: #000000;
+  color: var(--black);
   text-decoration: none;
 }
 #masthead #primary-menu-list a :visited {
@@ -130,7 +150,6 @@ button {
 }
 @media screen and (max-width: 430px) {
   #masthead {
-    height: calc(71.91px - 1em);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.09);
   }
   #masthead .site-logo {
@@ -138,13 +157,14 @@ button {
   }
   #masthead #primary-menu-list {
     display: none;
-    position: fixed;
-    top: 71.91px;
+    position: absolute;
+    z-index: 1;
+    top: var(--navbar);
     left: 0;
     right: 0;
     width: 100vw;
-    height: calc(100vh - 71.91px);
-    background-color: #E00000;
+    height: calc(100vh - var(--navbar));
+    background-color: var(--red);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -162,12 +182,12 @@ button {
     display: none;
   }
   .logged-in.admin-bar #masthead #primary-menu-list {
-    top: 117.91px;
-    height: calc(100vh - 71.91px - 46px);
+    top: calc(var(--navbar) + var(--admin-bar));
+    height: calc(100vh - var(--navbar) - var(--admin-bar));
   }
 }
 #contact-outer {
-  display: flex;
+  display: none;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -186,7 +206,7 @@ button {
   width: min(74.67vw, 587px);
   height: min(74.67vh, 769px);
   background-color: white;
-  border: #000000 solid 5px;
+  border: var(--black solid 5px);
   align-items: center;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -230,7 +250,7 @@ button {
   text-transform: uppercase;
   font-size: 12px;
   line-height: 16px;
-  color: #313144;
+  color: var(--dark-blue);
   width: 100%;
 }
 #contact-outer #contact-inner #wpcf7-f136-o1 .wpcf7-form p input {
@@ -280,6 +300,43 @@ button {
   }
   #contact-outer #contact-inner #wpcf7-f136-o1 .wpcf7-form p textarea {
     height: 149px;
+  }
+}
+.home .page-header {
+  width: 100%;
+  height: 67vw;
+  position: relative;
+}
+.home .page-header .wp-post-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home .page-header .page-title {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 96px;
+  color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+}
+
+@media screen and (max-width: 430px) {
+  .home .page-header .page-title {
+    font-size: 27.59px;
+    -webkit-text-stroke-width: 0.86px;
   }
 }
 #lightbox {

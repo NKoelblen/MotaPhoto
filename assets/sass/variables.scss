@@ -1,8 +1,20 @@
-$red: #E00000;
-$secondary-red: #FE5858;
-$tertiary-red: #FFD6D6;
-$black: #000000;
-$dark-grey: #C4C4C4;
-$medium-grey: #D8D8D8;
-$light-grey: #E5E5E5;
-$dark-blue: #313144;
+:root {
+    --red: #E00000;
+    --secondary-red: #FE5858;
+    --tertiary-red: #FFD6D6;
+    --dark-grey: #C4C4C4;
+    --medium-grey: #D8D8D8;
+    --light-grey: #E5E5E5;
+    --dark-blue: #313144;
+
+    --navbar : 80px;
+    --admin-bar: 46px;
+    --head-padding: 1em;
+    --mobile-break: 430px;
+}
+
+@media screen and (max-width: 430px) {
+    :root {
+        --navbar : 71.91px;
+    }
+}
