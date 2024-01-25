@@ -20,6 +20,7 @@ $mobile-break: 430px;
     align-items: center;
     gap: max(40px, 10.14vw);
     padding: $head-padding clamp(40px, 10.14vw, 146px);
+    box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
 
     .site-logo {
         height: 14px;
@@ -64,6 +65,7 @@ $mobile-break: 430px;
 @media screen and (max-width: $mobile-break) {
     #masthead {
         height: calc($mobile-header - $head-padding);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.09);
     
         .site-logo {
             height: 9px;

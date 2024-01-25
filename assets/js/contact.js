@@ -1,20 +1,20 @@
-const contactContainer = document.querySelector('#contact-container');
+const contactOuter = document.querySelector('#contact-outer');
 
 document.querySelectorAll('.contact-btn').forEach(button => {
     button.addEventListener("click", () => {        
-        contactContainer.classList.add("open");
-        contactContainer.style.setProperty('display', 'block', 'important');
+        contactOuter.classList.add("open");
+        contactOuter.style.setProperty('display', 'flex', 'important');
     })
 }) 
-document.addEventListener("click", function(event) {
-    if (!event.target.closest("#contact-container, .contact-btn")) {
-        contactContainer.classList.remove("open");
-        contactContainer.style.setProperty('display', 'none', 'important');
+contactOuter.addEventListener("click", function(event) {
+    if (!event.target.closest("#contact-inner")) {
+        contactOuter.classList.remove("open");
+        contactOuter.style.setProperty('display', 'none', 'important');
     }
 })
 
 if (document.querySelector('#reference')) {
-    document.getElementsByName("photo").forEach(input => {
+    document.getElementsByName("your-photo").forEach(input => {
         input.setAttribute('value', document.querySelector('#reference').innerHTML);
     })
 }
