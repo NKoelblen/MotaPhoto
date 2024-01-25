@@ -71,20 +71,97 @@ body h1, body h2, body h3 {
   font-family: "Space Mono";
 }
 
-@media screen and (min-width: 375px) {
+body {
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.menu-item {
+  list-style-type: none;
+}
+
+#masthead {
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: calc(80px - 2em);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: max(40px, 10.14vw);
+  padding: 1em clamp(40px, 10.14vw, 146px);
+}
+#masthead .site-logo {
+  height: 14px;
+}
+#masthead button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+#masthead #primary-menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1em, 3.13vw, 45px);
+  margin: 0;
+  padding: 0;
+}
+#masthead #primary-menu-list a, #masthead #primary-menu-list button {
+  font-family: "Space Mono";
+  font-size: 16px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+#masthead #primary-menu-list a {
+  color: #000000;
+  text-decoration: none;
+}
+#masthead #primary-menu-list a :visited {
+  color: inherit;
+}
+
+@media screen and (min-width: 430px) {
   #primary-mobile-menu {
     display: none;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 430px) {
+  #masthead {
+    height: calc(71.91px - 1em);
+  }
+  #masthead .site-logo {
+    height: 9px;
+  }
+  #masthead #primary-menu-list {
+    display: none;
+    position: fixed;
+    top: 71.91px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: calc(100vh - 71.91px);
+    background-color: #E00000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+  #masthead #primary-menu-list a, #masthead #primary-menu-list button {
+    font-size: 44px;
+    line-height: 65px;
+    color: white;
+  }
   #primary-mobile-menu {
     display: block;
   }
   #primary-mobile-menu .dropdown-icon.close {
     display: none;
   }
-  #primary-menu-list {
-    display: none;
+  .logged-in.admin-bar #masthead #primary-menu-list {
+    top: 117.91px;
+    height: calc(100vh - 71.91px - 46px);
   }
 }
 #contact-container {

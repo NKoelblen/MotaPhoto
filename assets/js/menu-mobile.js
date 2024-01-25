@@ -13,19 +13,23 @@ menuBtn.addEventListener("click", () => {
         menuBtn.setAttribute("aria-expanded", "true");
         openIcone.style.setProperty('display', 'none', "important");
         closeIcone.style.setProperty('display', 'inline', 'important');
-        menuUL.style.setProperty('display', 'block', 'important');
+        menuUL.style.setProperty('display', 'flex', 'important');
     } else {
         closemenu();
     }
 })
-document.querySelectorAll('#primary-menu-list a').forEach(link => {
+document.querySelectorAll('#primary-menu-list li').forEach(link => {
     link.addEventListener("click", () => {
-        closemenu();
+        console.log('test');
+        if (window.matchMedia("(max-width: 430px)").matches) {
+            console.log('test');
+            closemenu();
+        }
     })
 })
 window.addEventListener("resize", () => {
-    if (window.matchMedia("(min-width: 375px)").matches) {
-        menuUL.style.setProperty('display', 'block', 'important');
+    if (window.matchMedia("(min-width: 430px)").matches) {
+        menuUL.style.setProperty('display', 'flex', 'important');
     } else {
         menuUL.style.setProperty('display', 'none', 'important');
     }

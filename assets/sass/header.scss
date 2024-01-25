@@ -1,16 +1,105 @@
-@media screen and (min-width: 375px) {
+$red: #E00000;
+$secondary-red: #FE5858;
+$tertiary-red: #FFD6D6;
+$black: #000000;
+$dark-grey: #C4C4C4;
+$medium-grey: #D8D8D8;
+$light-grey: #E5E5E5;
+$dark-blue: #313144;
+
+$mobile-header: 71.91px;
+$admin-bar: 46px;
+$head-padding: 1em;
+$mobile-break: 430px;
+
+#masthead {
+    height: fit-content;
+    min-height: calc(80px - $head-padding * 2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: max(40px, 10.14vw);
+    padding: $head-padding clamp(40px, 10.14vw, 146px);
+
+    .site-logo {
+        height: 14px;
+    }
+
+    button {
+        padding: 0;
+        border: none;
+        background: none;
+    }
+
+    #primary-menu-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(1em, 3.13vw, 45px);
+        margin: 0;
+        padding: 0;
+
+        a, button {
+            font-family: 'Space Mono';
+            font-size: 16px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        a {
+            color: $black;
+            text-decoration: none;
+
+            & :visited {
+                color: inherit;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $mobile-break) {
     #primary-mobile-menu {
         display: none;
     }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: $mobile-break) {
+    #masthead {
+        height: calc($mobile-header - $head-padding);
+    
+        .site-logo {
+            height: 9px;
+        }
+
+        #primary-menu-list {
+            display: none;
+            position: fixed;
+            top: $mobile-header;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            height: calc(100vh - $mobile-header);
+            background-color: $red;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+    
+            a, button {
+                font-size: 44px;
+                line-height: 65px;
+                color: white;
+            }
+        }
+    }
     #primary-mobile-menu {
         display: block;
     }
     #primary-mobile-menu .dropdown-icon.close {
         display: none;
     }
-    #primary-menu-list {
-        display: none;
+
+    .logged-in.admin-bar #masthead #primary-menu-list {
+        top: calc($mobile-header + $admin-bar);
+        height: calc(100vh - $mobile-header - $admin-bar);
     }
 }
+
