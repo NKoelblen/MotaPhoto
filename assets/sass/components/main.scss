@@ -17,7 +17,9 @@ a {
 
 .menu-item {
     list-style-type: none;
-    font-family: 'Space Mono';
-    font-size: 16px;
-    text-transform: uppercase;
+    * {
+        font-family: 'Space Mono';
+        font-size: 16px;
+        text-transform: uppercase;
+    }
 }

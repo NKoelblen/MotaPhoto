@@ -108,6 +108,8 @@ a :visited {
 
 .menu-item {
   list-style-type: none;
+}
+.menu-item * {
   font-family: "Space Mono";
   font-size: 16px;
   text-transform: uppercase;
@@ -142,11 +144,6 @@ a :visited {
 }
 #masthead #primary-menu-list a, #masthead #primary-menu-list .contact-btn {
   white-space: nowrap;
-}
-#masthead #primary-menu-list .contact-btn {
-  font-family: "Space Mono";
-  font-size: 16px;
-  text-transform: uppercase;
 }
 
 @media screen and (min-width: 430px) {

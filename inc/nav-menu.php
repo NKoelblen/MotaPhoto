@@ -17,7 +17,7 @@ function add_items_to_nav_menu( $items, $args ) {
 	    $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page"><button class="contact-btn">Contact</button></li>';
     }
     if( $args->theme_location == 'footer' ){
-        $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page">Tous droits réservés</li>';
+        $items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page"><p>Tous droits réservés</p></li>';
     }
 	return $items;
 }
