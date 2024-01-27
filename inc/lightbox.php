@@ -24,8 +24,7 @@ function lightbox() {
             $photos_loop->the_post();
             $i = $photos_loop->current_post;
                 ob_start();
-                $photos_loop_format = array_pop(get_the_terms(get_the_id(), 'format' ));
-                the_post_thumbnail( 'full', array('class' => $photos_loop_format->slug));
+                the_post_thumbnail( 'full');
                 $datas[$i]['photo'] = ob_get_clean();
                 ob_start(); ?>
                 <div class="informations">
