@@ -476,6 +476,102 @@ a :visited {
     width: min(72vw, 270px);
   }
 }
+body.single-photo #main {
+  width: 79.72vw;
+  margin: auto;
+  padding: 38px 0 109px;
+}
+body.single-photo #main article.photo {
+  width: 100%;
+  height: calc(100vh - var(--navbar) - 38px);
+}
+body.single-photo #main article.photo .content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: calc(100% - 118px);
+}
+body.single-photo #main article.photo .content-container .entry-content {
+  flex: 0 1 calc(50% - 10px);
+  padding-bottom: 17px;
+  border-bottom: solid 1px black;
+}
+body.single-photo #main article.photo .content-container .entry-content .entry-title {
+  max-width: 420px;
+  font-size: clamp(46px, 4.58vw, 66px);
+  font-style: italic;
+  font-weight: normal;
+  text-transform: uppercase;
+  line-height: 58px;
+  margin: 20px 0;
+}
+body.single-photo #main article.photo .content-container .entry-content p {
+  max-width: 420px;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+body.single-photo #main article.photo .content-container .entry-thumbnail {
+  flex: 0 1 calc(50% - 10px);
+  height: 100%;
+}
+body.single-photo #main article.photo .content-container .entry-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper {
+  height: 118px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px black;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .contact {
+  flex: 0 1 calc(50% - 10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .contact p {
+  font-size: 14px;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .contact .contact-btn {
+  width: 242px;
+  height: 34px;
+  border: none;
+  background-color: var(--medium-grey);
+  font-size: 12px;
+  font-family: "Space Mono";
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper {
+  flex: 0 1 calc(50% - 10px);
+  position: relative;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .wp-post-image {
+  width: 81px;
+  height: 71px;
+  object-fit: cover;
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .nav-links {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 12px;
+  right: 0;
+}
+body.single-photo #main .related-photos-container h2 {
+  margin: 77px 0 52px;
+  font-size: 18px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+
 .photos-wrapper {
   width: 100%;
   display: flex;

@@ -11,7 +11,7 @@ while ( have_posts() ) :
     global $post ?>
 
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <section class="">
+        <section class="content-container">
             <div class="entry-content">
                 <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
                 <p>Référence : <span id="reference"><?php the_field('reference'); ?></span></p>
@@ -38,27 +38,31 @@ while ( have_posts() ) :
                 <p>Type : <?php the_field('type'); ?></p>
                 <?php the_date( 'Y', '<p>Année : ', '</p>' ) ?>
             </div>
-            <?php the_post_thumbnail( 'large' ); ?>
+            <div class="entry-thumbnail">
+                <?php the_post_thumbnail( 'large' ); ?>
+            </div>
         </section>
-        <div class="">
-            <section class="">
+        <div class="contact-navigation-wrapper">
+            <section class="contact">
                 <p>Cette photo vous intéresse ?</p>
                 <button class="contact-btn">Contact</button>
             </section>
-            <?php $prev_photo = get_previous_post();
-            $next_photo = get_next_post();
-            if( $prev_photo) :
-                echo get_the_post_thumbnail($prev_photo->ID,'thumbnail', ['class' => 'preview-nav prev']);
-            endif;
-            if( $next_photo) :
-                echo get_the_post_thumbnail($next_photo->ID,'thumbnail', ['class' => 'preview-nav next']);
-            endif;
-            the_post_navigation(
-		        [
-		        	'next_text' => '<img src="' . get_template_directory_uri() . '/assets/images/prev.svg" class="meta-nav" alt="accéder à la photo précédente">',
-		        	'prev_text' => '<img src="' . get_template_directory_uri() . '/assets/images/next.svg" class="meta-nav" alt="accéder à la photo précédente">',
-		        ]
-	        ); ?>
+            <section class="post-navigation-wrapper">
+                <?php $prev_photo = get_previous_post();
+                $next_photo = get_next_post();
+                if( $prev_photo) :
+                    echo get_the_post_thumbnail($prev_photo->ID,'thumbnail', ['class' => 'preview-nav prev']);
+                endif;
+                if( $next_photo) :
+                    echo get_the_post_thumbnail($next_photo->ID,'thumbnail', ['class' => 'preview-nav next']);
+                endif;
+                the_post_navigation(
+		            [
+		            	'next_text' => '<img src="' . get_template_directory_uri() . '/assets/images/prev.svg" class="meta-nav" alt="accéder à la photo précédente">',
+		            	'prev_text' => '<img src="' . get_template_directory_uri() . '/assets/images/next.svg" class="meta-nav" alt="accéder à la photo précédente">',
+		            ]
+	            ); ?>
+            </section>
         </div>
 
     </article>
