@@ -25,8 +25,6 @@
 		</div>
     </main><!-- #main -->
 
-	<div id="lightbox"></div>
-
 	<footer id="colophon" class="site-footer">
 			<nav class="footer-navigation">
 				<ul class="footer-navigation-wrapper">

@@ -7,7 +7,7 @@
             // Empêcher l'envoi classique du formulaire
             e.preventDefault();
 
-            document.querySelector('#lightbox').style.setProperty('display', 'block');
+            document.querySelector('#lightbox').style.setProperty('display', 'flex');
             $('#lightbox .close-btn').click( function() {
                 document.querySelector('#lightbox').style.setProperty('display', 'none');
             })
@@ -46,7 +46,7 @@
                 let nbSlides = slides.length;
                 let i = body.data['current-photo'];
                 $('#lightbox .photo').html(slides[i]['photo']);
-                $('#lightbox .informations').html(slides[i]['informations']);
+                $('#lightbox .informations').replaceWith(slides[i]['informations']);
                 document.querySelectorAll("#lightbox .nav-link").forEach(navLink => {
                 	navLink.addEventListener("click", () => {
                 		if (navLink === document.querySelector("#lightbox .nav-previous")) {
@@ -65,7 +65,7 @@
                 			}
                 		}
                         $('#lightbox .photo').html(slides[i]['photo']);
-                        $('#lightbox .informations').html(slides[i]['informations']);
+                        $('#lightbox .informations').replaceWith(slides[i]['informations']);
                 	});
                 });
 

@@ -549,9 +549,86 @@ a :visited {
 }
 #lightbox {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  padding: clamp(8px, 3.82vw, 55px) clamp(8px, 3.47vw, 50px);
+  gap: clamp(8px, 4.17vw, 60px);
+  align-items: center;
+}
+#lightbox .close-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  height: fit-content;
+  position: fixed;
+  top: 55px;
+  right: 50px;
 }
 #lightbox .nav-link {
   cursor: pointer;
+  color: white;
+  display: flex;
+  gap: 8px;
+}
+#lightbox .nav-link span {
+  font-size: 12px;
+  line-height: 18px;
+}
+#lightbox .photo-container {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#lightbox .photo-container .photo {
+  width: fit-content;
+  height: fit-content;
+}
+#lightbox .photo-container .photo .wp-post-image {
+  width: 100%;
+  height: fit-content;
+  max-height: calc(100vh - clamp(8px, 3.82vw, 55px) * 2 - 40px);
+  object-fit: contain;
+}
+#lightbox .photo-container .informations {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin-top: 19px;
+}
+#lightbox .photo-container .informations .entry-title, #lightbox .photo-container .informations .categorie {
+  color: white;
+  font-family: "Poppins";
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@media (orientation: landscape) {
+  #lightbox .photo-container {
+    height: 100%;
+  }
+}
+@media (orientation: portrait) {
+  #lightbox .photo-container {
+    height: fit-content;
+  }
+}
+@media screen and (max-width: 760px) {
+  #lightbox .nav-link span {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

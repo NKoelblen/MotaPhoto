@@ -43,8 +43,8 @@ get_header(); ?>
 				<p><span class="default">Catégories</span><span class="checked">Catégories</span></p>
 				<div class="options">
 					<div>
-						<input type="radio" id="category-empty" name="category" value=""/>
 						<label for="category-empty"></label>
+						<input type="radio" id="category-empty" name="category" value=""/>
 					</div>
 					<?php foreach($categories as $category) : ?>
 						<div>
