@@ -180,7 +180,7 @@ a :visited {
     justify-content: center;
     gap: 18px;
   }
-  #masthead #primary-menu-list a, #masthead #primary-menu-list button {
+  #masthead #primary-menu-list a, #masthead #primary-menu-list .contact-btn {
     font-size: 44px;
     line-height: 65px;
     color: white;
@@ -365,12 +365,16 @@ a :visited {
   flex-direction: column;
   gap: 40px;
   padding: 79px 0 40px;
-  margin: 0 10.14vw;
+  margin: auto;
+  width: 79.72vw;
   align-items: center;
 }
 .home .photos-container #js-photos-filter {
   display: flex;
-  gap: 36px;
+  flex-wrap: wrap;
+  column-gap: clamp(8px, 2.5vw, 36px);
+  row-gap: 8px;
+  width: 100%;
 }
 .home .photos-container #js-photos-filter .select {
   position: relative;
@@ -399,6 +403,7 @@ a :visited {
 .home .photos-container #js-photos-filter .select .options {
   display: none;
   position: absolute;
+  left: 0;
   z-index: 1;
   width: 260px;
   background-color: white;
@@ -433,7 +438,7 @@ a :visited {
 }
 .home .photos-container .js-loadmore-photos {
   box-sizing: border-box;
-  width: 272px;
+  width: min(100%, 272px);
   height: 50px;
   padding: 8px 15px;
   font-size: 12px;
@@ -442,12 +447,36 @@ a :visited {
   border: none;
 }
 
-@media screen and (max-width: 430px) {
-  .home .page-header {
-    margin-top: var(--navbar);
+@media screen and (max-width: 1043px) {
+  .home .photos-container #js-photos-filter {
+    justify-content: center;
   }
+  .home .photos-container #js-photos-filter .select#sort {
+    margin-right: auto;
+  }
+}
+@media screen and (max-width: 430px) {
   .home .photos-container {
-    padding: 26px 0 48px;
+    padding: 26px 26px 48px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .home .photos-container #js-photos-filter {
+    flex-direction: column;
+    align-items: center;
+  }
+  .home .photos-container #js-photos-filter .select {
+    position: relative;
+    width: min(72vw, 270px);
+  }
+  .home .photos-container #js-photos-filter .select#sort {
+    margin-left: auto;
+  }
+  .home .photos-container #js-photos-filter .select p {
+    width: min(72vw, 270px);
+  }
+  .home .photos-container #js-photos-filter .select .options {
+    width: min(72vw, 270px);
   }
 }
 .photos-wrapper {
@@ -502,6 +531,7 @@ a :visited {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 18px;
 }
 .photos-wrapper .single-photo .overlay .informations .entry-title, .photos-wrapper .single-photo .overlay .informations p {
   margin: 0;
@@ -511,6 +541,12 @@ a :visited {
   font-weight: normal;
 }
 
+@media screen and (max-width: 760px) {
+  .photos-wrapper .single-photo {
+    flex: 0 1 100%;
+    height: 74.4vw;
+  }
+}
 #lightbox {
   display: none;
 }

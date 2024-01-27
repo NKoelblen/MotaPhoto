@@ -33,12 +33,16 @@
         flex-direction: column;
         gap: 40px;
         padding: 79px 0 40px;
-        margin: 0 10.14vw;
+        margin: auto;
+        width: 79.72vw;
         align-items: center;
 
         #js-photos-filter {
             display: flex;
-            gap: 36px;
+            flex-wrap: wrap;
+            column-gap: clamp(8px, 2.5vw, 36px);
+            row-gap: 8px;
+            width: 100%;
 
             .select {
                 position: relative;
@@ -69,6 +73,7 @@
                 .options {
                     display: none;
                     position: absolute;
+                    left: 0;
                     z-index: 1;
                     width: 260px;
                     background-color: white;
@@ -107,78 +112,9 @@
             }
         }
 
-        .photos-wrapper {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            row-gap: 20px;
-
-            .single-photo {
-                flex: 0 1 calc(50% - 10px);
-                height: 34.38vw;
-                position: relative;
-
-                &:hover .overlay {
-                    display: flex;
-                }
-
-                .wp-post-image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-
-                .overlay {
-                    display: none;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: center;
-                    position: absolute;
-                    top: 0;
-                    box-sizing: border-box;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(0, 0, 0, 0.6);
-                    color: white;
-                    padding: 12px 18px;
-
-                    .js-lightbox {
-                        background: none;
-                        border: none;
-                        padding: 0;
-                        margin: 0;
-                        margin-left: auto;
-                    }
-
-                    a {
-                        position: aboslute;
-                        top: 0;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                    }
-
-                    .informations {
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-
-                        .entry-title, p {
-                            margin: 0;
-                            font-size: 14px;
-                            font-family: 'Poppins';
-                            text-transform: uppercase;
-                            font-weight: normal;
-                        }
-                    }
-                }
-            }
-        }
-
         .js-loadmore-photos {
             box-sizing: border-box;
-            width: 272px;
+            width: min(100%, 272px);
             height: 50px;
             padding: 8px 15px;
             font-size: 12px;
@@ -188,13 +124,49 @@
         }
     }
 }
+@media screen and (max-width: 1043px) {
+    .home {
+        .photos-container {    
+            #js-photos-filter {
+                justify-content: center;
+                .select {
+                    &#sort {
+                        margin-right: auto;
+                    }
+                }
+            }
+        }
+    }
+}
 @media screen and (max-width: 430px) {
     .home {
-        .page-header {
-            margin-top: var(--navbar);
-        }
         .photos-container {
-            padding: 26px 0 48px;
+            padding: 26px 26px 48px;
+            width: 100%;
+            box-sizing: border-box;
+
+            #js-photos-filter {
+                flex-direction: column;
+                align-items: center;
+    
+                .select {
+                    position: relative;
+                    width: min(72vw, 270px);
+    
+                    &#sort {
+                        margin-left: auto;
+                    }
+    
+                    p {
+                        width: min(72vw, 270px);
+
+                    }
+                    .options {
+                        width: min(72vw, 270px);
+                    }
+                }
+            }
+    
         }
     }
 }

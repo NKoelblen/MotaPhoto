@@ -80,7 +80,7 @@ while ( have_posts() ) :
         ];
         $photos_loop = new WP_Query( $photos_args );
         if ( $photos_loop->have_posts() ) : ?>
-            <div class="related-photos-wrapper">
+            <div class="photos-wrapper">
                 <?php while ( $photos_loop->have_posts() ) :
                     $photos_loop->the_post();
                     get_template_part( 'template-parts/photos-loop' );
