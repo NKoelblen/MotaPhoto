@@ -2,7 +2,7 @@
     $(document).ready(function () {
 
         // Chargment des photos en Ajax
-        $( ".photos-wrapper" ).on( "click", ".js-lightbox", function( e ) { // Event propagation
+        $(".photos-wrapper").on("click", ".js-lightbox", function( e ) {
 
             // Empêcher l'envoi classique du formulaire
             e.preventDefault();

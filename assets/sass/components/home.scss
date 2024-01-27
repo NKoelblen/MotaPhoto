@@ -1,0 +1,117 @@
+.home {
+    .page-header {
+        width: 100%;
+        height: calc(100vw * 0.67);
+        position: relative;
+
+        .wp-post-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .page-title {
+            width: fit-content;
+            height: fit-content;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+            font-style: italic;
+            font-size: max(27.59px, 6.67vw);
+            color: transparent;
+            -webkit-text-stroke-width: 0.21vw;
+            -webkit-text-stroke-color: white;
+        }
+    }
+    .photos-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 79px 0 40px;
+
+        #js-photos-filter {
+            display: flex;
+            gap: 36px;
+
+            .select {
+                position: relative;
+
+                &#sort {
+                    margin-left: auto;
+                }
+
+                p {
+                    --chevron: url(./assets/images/chevron-down.svg);
+                    box-sizing: border-box;
+                    width: 260px;
+                    height: 43px;
+                    border: solid 1.3px #B8BBC2;
+                    border-radius: 8px;
+                    margin: auto;
+                    padding: 11px 18px;
+                    color: var(--dark-blue);
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    background: var(--chevron) no-repeat right 18px center;
+                    cursor: pointer;
+
+                    .default {
+                        display: none;
+                    }
+                }
+                .options {
+                    display: none;
+                    position: absolute;
+                    width: 260px;
+                    background-color: white;
+                    border-radius: 0 0 8px 8px;
+                    overflow: hidden;
+
+                    div {
+                        box-sizing: border-box;
+                        width: 100%;
+                        height: 42px;
+                        padding: 11px 24px;
+
+                        &:hover {
+                            background-color: var(--tertiary-red);
+                        }
+                        &:active {
+                            background-color: var(--secondary-red);
+                        }
+                        &:has(input:checked) {
+                            background-color: var(--red);
+                            color: white;
+                        }
+
+                        input {
+                            visibility: hidden;
+                        }
+                        label {
+                            font-size: 12px;
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 430px) {
+    .home {
+        .page-header {
+            margin-top: var(--navbar);
+        }
+        .photos-container {
+            padding: 26px 0 48px;
+        }
+    }
+}

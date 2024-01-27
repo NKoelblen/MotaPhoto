@@ -39,13 +39,21 @@ get_header(); ?>
 					'hide_empty' => true,
 				]
 			); ?>
-			<select name="category" id="category">
-				<option value="">Catégories</option>
-				<option value=""></option>
-				<?php foreach($categories as $category) : ?>
-					<option value="<?= $category->slug; ?>"><?= $category->name; ?></option>
-				<?php endforeach; ?>
-			</select>
+			<div id="categories" class="select">
+				<p><span class="default">Catégories</span><span class="checked">Catégories</span></p>
+				<div class="options">
+					<div>
+						<input type="radio" id="category-empty" name="category" value=""/>
+						<label for="category-empty"></label>
+					</div>
+					<?php foreach($categories as $category) : ?>
+						<div>
+							<label for="<?= $category->slug; ?>"><?= $category->name; ?></label>
+							<input type="radio" id="<?= $category->slug; ?>" name="category" value="<?= $category->slug; ?>"/>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
 			<?php $formats = get_terms(
 				[
 					'taxonomy' => 'format',
@@ -54,18 +62,34 @@ get_header(); ?>
 					'hide_empty' => true,
 				]
 			); ?>
-			<select name="format" id="format">
-				<option value="">Formats</option>
-				<option value=""></option>
-				<?php foreach($formats as $format) : ?>
-					<option value="<?= $format->slug; ?>"><?= $format->name; ?></option>
-				<?php endforeach; ?>
-			</select>
-			<select name="sort" id="sort">
-				<option value="">Trier par dates</option>
-				<option value="DESC">à partir des plus récentes</option>
-				<option value="ASC">à partir des plus anciennes</option>
-			</select>
+			<div id="formats" class="select">
+				<p><span class="default">Formats</span><span class="checked">Formats</span></p>
+				<div class="options">
+					<div>
+						<label for="format-empty"></label>
+						<input type="radio" id="format-empty" name="format" value=""/>
+					</div>
+					<?php foreach($formats as $format) : ?>
+						<div>
+							<label for="<?= $format->slug; ?>"><?= $format->name; ?></label>
+							<input type="radio" id="<?= $format->slug; ?>" name="format" value="<?= $format->slug; ?>"/>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+			<div id="sort" class="select">
+				<p><span class="default">Trier par</span><span class="checked">Trier par</span></p>
+				<div class="options">
+					<div>
+						<label for="DESC">à partir des plus récentes</label>
+						<input type="radio" id="DESC" name="sort" value="DESC"/>
+					</div>
+					<div>
+						<label for="ASC">à partir des plus anciennes</label>
+						<input type="radio" id="ASC" name="sort" value="ASC"/>
+					</div>
+				</div>
+			</div>
 		</form>
         <?php $photos_args = [
 			'post_type' => 'photo',

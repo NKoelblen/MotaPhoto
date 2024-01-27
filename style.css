@@ -8,6 +8,25 @@ Description: Thème du site de Nathalie Mota
 Requires at least: WordPress 6.4
 Version: 1.0
 */
+:root {
+  --red: #E00000;
+  --secondary-red: #FE5858;
+  --tertiary-red: #FFD6D6;
+  --dark-grey: #C4C4C4;
+  --medium-grey: #D8D8D8;
+  --light-grey: #E5E5E5;
+  --dark-blue: #313144;
+  --navbar: 80px;
+  --admin-bar: 46px;
+  --head-padding: 1em;
+  --mobile-break: 430px;
+}
+
+@media screen and (max-width: 430px) {
+  :root {
+    --navbar: 71.91px;
+  }
+}
 @font-face {
   font-family: "Poppins";
   src: url(./assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
@@ -64,32 +83,13 @@ Version: 1.0
   font-weight: bold;
   font-display: swap;
 }
-body p, body span, body li, body a, body button, body input, body select {
+body p, body span, body li, body a, body button, body input, body textarea, body label {
   font-family: "Poppins";
 }
 body h1, body h2, body h3 {
   font-family: "Space Mono";
 }
 
-:root {
-  --red: #E00000;
-  --secondary-red: #FE5858;
-  --tertiary-red: #FFD6D6;
-  --dark-grey: #C4C4C4;
-  --medium-grey: #D8D8D8;
-  --light-grey: #E5E5E5;
-  --dark-blue: #313144;
-  --navbar: 80px;
-  --admin-bar: 46px;
-  --head-padding: 1em;
-  --mobile-break: 430px;
-}
-
-@media screen and (max-width: 430px) {
-  :root {
-    --navbar: 71.91px;
-  }
-}
 body {
   margin: 0 auto;
 }
@@ -104,7 +104,6 @@ button {
 
 #masthead {
   box-sizing: border-box;
-  height: -moz-fit-content;
   height: fit-content;
   min-height: var(--navbar);
   display: flex;
@@ -112,6 +111,7 @@ button {
   align-items: center;
   gap: max(40px, 10.14vw);
   padding: var(--head-padding) clamp(40px, 10.14vw, 146px);
+  background-color: white;
   box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
 }
 #masthead .site-logo {
@@ -151,6 +151,10 @@ button {
 @media screen and (max-width: 430px) {
   #masthead {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.09);
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
   }
   #masthead .site-logo {
     height: 9px;
@@ -181,10 +185,6 @@ button {
   #primary-mobile-menu .dropdown-icon.close {
     display: none;
   }
-  .logged-in.admin-bar #masthead #primary-menu-list {
-    top: calc(var(--navbar) + var(--admin-bar));
-    height: calc(100vh - var(--navbar) - var(--admin-bar));
-  }
 }
 #contact-outer {
   display: none;
@@ -193,6 +193,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
@@ -310,13 +311,10 @@ button {
 .home .page-header .wp-post-image {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .home .page-header .page-title {
-  width: -moz-fit-content;
   width: fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   margin: auto;
   position: absolute;
@@ -325,18 +323,89 @@ button {
   left: 0;
   right: 0;
   text-transform: uppercase;
+  text-align: center;
   font-weight: bold;
   font-style: italic;
-  font-size: 96px;
+  font-size: max(27.59px, 6.67vw);
   color: transparent;
-  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-width: 0.21vw;
   -webkit-text-stroke-color: white;
+}
+.home .photos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 79px 0 40px;
+}
+.home .photos-container #js-photos-filter {
+  display: flex;
+  gap: 36px;
+}
+.home .photos-container #js-photos-filter .select {
+  position: relative;
+}
+.home .photos-container #js-photos-filter .select#sort {
+  margin-left: auto;
+}
+.home .photos-container #js-photos-filter .select p {
+  --chevron: url(./assets/images/chevron-down.svg);
+  box-sizing: border-box;
+  width: 260px;
+  height: 43px;
+  border: solid 1.3px #B8BBC2;
+  border-radius: 8px;
+  margin: auto;
+  padding: 11px 18px;
+  color: var(--dark-blue);
+  font-size: 12px;
+  text-transform: uppercase;
+  background: var(--chevron) no-repeat right 18px center;
+  cursor: pointer;
+}
+.home .photos-container #js-photos-filter .select p .default {
+  display: none;
+}
+.home .photos-container #js-photos-filter .select .options {
+  display: none;
+  position: absolute;
+  width: 260px;
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+.home .photos-container #js-photos-filter .select .options div {
+  box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+  padding: 11px 24px;
+}
+.home .photos-container #js-photos-filter .select .options div:hover {
+  background-color: var(--tertiary-red);
+}
+.home .photos-container #js-photos-filter .select .options div:active {
+  background-color: var(--secondary-red);
+}
+.home .photos-container #js-photos-filter .select .options div:has(input:checked) {
+  background-color: var(--red);
+  color: white;
+}
+.home .photos-container #js-photos-filter .select .options div input {
+  visibility: hidden;
+}
+.home .photos-container #js-photos-filter .select .options div label {
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 430px) {
-  .home .page-header .page-title {
-    font-size: 27.59px;
-    -webkit-text-stroke-width: 0.86px;
+  .home .page-header {
+    margin-top: var(--navbar);
+  }
+  .home .photos-container {
+    padding: 26px 0 48px;
   }
 }
 #lightbox {
@@ -344,4 +413,6 @@ button {
 }
 #lightbox .nav-link {
   cursor: pointer;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -20,9 +20,7 @@ menuBtn.addEventListener("click", () => {
 })
 document.querySelectorAll('#primary-menu-list li').forEach(link => {
     link.addEventListener("click", () => {
-        console.log('test');
         if (window.matchMedia("(max-width: 430px)").matches) {
-            console.log('test');
             closemenu();
         }
     })
