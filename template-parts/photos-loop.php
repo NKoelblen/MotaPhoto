@@ -9,22 +9,26 @@ global $photos_loop; ?>
 
 <article class="single-photo">
     <?php the_post_thumbnail( 'medium_large' ); ?>
-    <button
-	    class="js-lightbox"
-        data-query-args='<?= json_encode($photos_loop->query); ?>'
-        data-current-photo=<?= $photos_loop->current_post; ?>
-        data-posts-per-page=<?= $photos_loop->post_count; ?>
-        data-nonce="<?= wp_create_nonce('lightbox'); ?>"
-        data-action="lightbox"
-        data-ajaxurl="<?= admin_url('admin-ajax.php'); ?>"
-    >
-        <img src="<?= get_template_directory_uri() . '/assets/images/fullscreen.svg'; ?> " alt="ouvrir en plein écran">
-    </button>
-    <a href="<?php the_permalink() ?>"><img src="<?= get_template_directory_uri() . '/assets/images/eye.svg'; ?> " alt="accéder aux informations de la photo"></a>
-    <?php the_title('<h3 class="entry-title">', '</h3>'); ?>
-    <p>
-        <?php if ( !empty( $photos_loop_categories ) ) :
-            echo implode(', ',$photos_loop_categories_names);
-        endif; ?>
-    </p>
+    <div class="overlay">
+        <button
+	        class="js-lightbox"
+            data-query-args='<?= json_encode($photos_loop->query); ?>'
+            data-current-photo=<?= $photos_loop->current_post; ?>
+            data-posts-per-page=<?= $photos_loop->post_count; ?>
+            data-nonce="<?= wp_create_nonce('lightbox'); ?>"
+            data-action="lightbox"
+            data-ajaxurl="<?= admin_url('admin-ajax.php'); ?>"
+        >
+            <img src="<?= get_template_directory_uri() . '/assets/images/fullscreen.svg'; ?> " alt="ouvrir en plein écran">
+        </button>
+        <a href="<?php the_permalink() ?>"><img src="<?= get_template_directory_uri() . '/assets/images/eye.svg'; ?> " alt="accéder aux informations de la photo"></a>
+        <div class="informations">
+            <?php the_title('<h3 class="entry-title">', '</h3>'); ?>
+            <p>
+                <?php if ( !empty( $photos_loop_categories ) ) :
+                    echo implode(', ',$photos_loop_categories_names);
+                endif; ?>
+            </p>
+        </div>
+    </div>
 </article>
