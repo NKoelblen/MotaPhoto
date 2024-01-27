@@ -1,0 +1,25 @@
+#colophon {
+    padding: 7px clamp(40px, 10.14vw, 146px) 30px;
+    border-top: solid 1px black;
+
+    .footer-navigation-wrapper {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 86px;
+        row-gap: 24px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    #colophon {
+        padding: 44px 0;
+    
+        .footer-navigation-wrapper {
+            flex-direction: column;
+        }
+    }
+}
