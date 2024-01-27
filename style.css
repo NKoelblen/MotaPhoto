@@ -337,6 +337,7 @@ button {
   gap: 40px;
   padding: 79px 0 40px;
   margin: 0 10.14vw;
+  align-items: center;
 }
 .home .photos-container #js-photos-filter {
   display: flex;
@@ -369,6 +370,7 @@ button {
 .home .photos-container #js-photos-filter .select .options {
   display: none;
   position: absolute;
+  z-index: 1;
   width: 260px;
   background-color: white;
   border-radius: 0 0 8px 8px;
@@ -459,6 +461,16 @@ button {
   font-family: "Poppins";
   text-transform: uppercase;
   font-weight: normal;
+}
+.home .photos-container .js-loadmore-photos {
+  box-sizing: border-box;
+  width: 272px;
+  height: 50px;
+  padding: 8px 15px;
+  font-size: 12px;
+  font-family: "Space Mono";
+  background-color: var(--medium-grey);
+  border: none;
 }
 
 @media screen and (max-width: 430px) {
