@@ -15,6 +15,17 @@ a {
     }
 }
 
+button {
+    font-size: 12px;
+    line-height: 18px;
+    font-family: 'Space Mono';
+    background-color: var(--medium-grey);
+    border: none;
+    border-radius: 2px;
+    padding: 8px 15px;
+    box-sizing: border-box;
+}
+
 .menu-item {
     list-style-type: none;
     * {

@@ -40,10 +40,11 @@ body.single-photo {
                     flex: 0 1 calc(50% - 10px);
                     height: 100%;
 
-                    img {
+                    .wp-post-image {
                         width: 100%;
                         height: 100%;
                         object-fit: contain;
+                        object-position: bottom;
                     }
                 }
             }
@@ -68,14 +69,8 @@ body.single-photo {
                     }
 
                     .contact-btn {
-                        box-sizing: border-box;
-                        width: clamp(82px, calc(100% - 207px), 242px);
+                        width: clamp(82px, calc(100% - 215px), 242px);
                         height: 34px;
-                        padding: 8px 15px;
-                        border: none;
-                        background-color: var(--medium-grey);
-                        font-size: 12px;
-                        font-family: 'Space Mono';
                     }
                 }
 

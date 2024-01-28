@@ -106,6 +106,17 @@ a :visited {
   color: inherit;
 }
 
+button {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: "Space Mono";
+  background-color: var(--medium-grey);
+  border: none;
+  border-radius: 2px;
+  padding: 8px 15px;
+  box-sizing: border-box;
+}
+
 .menu-item {
   list-style-type: none;
 }
@@ -132,7 +143,6 @@ a :visited {
 }
 #masthead button {
   padding: 0;
-  border: none;
   background: none;
 }
 #masthead #primary-menu-list {
@@ -294,14 +304,15 @@ a :visited {
   padding: 2px 4px;
 }
 #contact-outer #contact-inner #wpcf7-f136-o1 .wpcf7-form p .wpcf7-submit {
-  font-family: "Space Mono";
-  font-size: 12px;
-  line-height: 16px;
   height: 50px;
   margin-top: 5px;
+  font-size: 12px;
+  line-height: 18px;
+  font-family: "Space Mono";
+  background-color: var(--medium-grey);
   border: none;
   border-radius: 2px;
-  background-color: #D8D8D8;
+  padding: 8px 15px;
 }
 #contact-outer #contact-inner #wpcf7-f136-o1 .wpcf7-form p .wpcf7-spinner {
   display: none;
@@ -437,11 +448,6 @@ a :visited {
   box-sizing: border-box;
   width: min(100%, 272px);
   height: 50px;
-  padding: 8px 15px;
-  font-size: 12px;
-  font-family: "Space Mono";
-  background-color: var(--medium-grey);
-  border: none;
 }
 
 @media screen and (max-width: 1043px) {
@@ -516,10 +522,11 @@ body.single-photo #main article.photo .content-container .entry-thumbnail {
   flex: 0 1 calc(50% - 10px);
   height: 100%;
 }
-body.single-photo #main article.photo .content-container .entry-thumbnail img {
+body.single-photo #main article.photo .content-container .entry-thumbnail .wp-post-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: bottom;
 }
 body.single-photo #main article.photo .contact-navigation-wrapper {
   height: 118px;
@@ -541,14 +548,8 @@ body.single-photo #main article.photo .contact-navigation-wrapper .contact p {
   margin: 0;
 }
 body.single-photo #main article.photo .contact-navigation-wrapper .contact .contact-btn {
-  box-sizing: border-box;
-  width: clamp(82px, 100% - 207px, 242px);
+  width: clamp(82px, 100% - 215px, 242px);
   height: 34px;
-  padding: 8px 15px;
-  border: none;
-  background-color: var(--medium-grey);
-  font-size: 12px;
-  font-family: "Space Mono";
 }
 body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper {
   flex: 0 1 calc(50% - 10px);
@@ -698,7 +699,6 @@ body.single-photo #main .related-photos-container h2 {
 }
 .photos-wrapper .single-photo .overlay .js-lightbox {
   background: none;
-  border: none;
   padding: 0;
   margin: 0;
   margin-left: auto;
@@ -745,7 +745,6 @@ body.single-photo #main .related-photos-container h2 {
   align-items: center;
 }
 #lightbox .close-btn {
-  border: none;
   background: none;
   padding: 0;
   height: fit-content;

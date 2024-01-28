@@ -81,14 +81,15 @@
                         padding: 2px 4px;
                     }
                     .wpcf7-submit {
-                        font-family: 'Space Mono';
-                        font-size: 12px;
-                        line-height: 16px;
                         height: 50px;
                         margin-top: 5px;
+                        font-size: 12px;
+                        line-height: 18px;
+                        font-family: 'Space Mono';
+                        background-color: var(--medium-grey);
                         border: none;
                         border-radius: 2px;
-                        background-color: #D8D8D8;
+                        padding: 8px 15px;
                     }
                     .wpcf7-spinner {
                         display: none;
