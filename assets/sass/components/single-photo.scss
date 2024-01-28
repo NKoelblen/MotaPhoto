@@ -56,16 +56,22 @@ body.single-photo {
                 .contact {
                     flex: 0 1 calc(50% - 10px);
                     display: flex;
+                    flex-wrap: wrap;
                     justify-content: space-between;
                     align-items: center;
+                    gap: 15px;
+                    padding: 24px 0;
 
                     p {
                         font-size: 14px;
+                        margin: 0;
                     }
 
                     .contact-btn {
-                        width: 242px;
+                        box-sizing: border-box;
+                        width: clamp(82px, calc(100% - 207px), 242px);
                         height: 34px;
+                        padding: 8px 15px;
                         border: none;
                         background-color: var(--medium-grey);
                         font-size: 12px;
@@ -77,15 +83,6 @@ body.single-photo {
                     flex: 0 1 calc(50% - 10px);
                     position: relative;
 
-                    .wp-post-image {
-                        width: 81px;
-                        height: 71px;
-                        object-fit: cover;
-                        // display: none;
-                        position: absolute;
-                        top: 8px;
-                        right: 0;
-                    }
                     .nav-links {
                         display: flex;
                         gap: 30px;
@@ -93,19 +90,133 @@ body.single-photo {
                         position: absolute;
                         bottom: 12px;
                         right: 0;
+
+                        .wp-post-image {
+                            width: 81px;
+                            height: 71px;
+                            object-fit: cover;
+                            display: none;
+                            position: absolute;
+                            top: -70px;
+                            left: 0;
+                            right: 0;
+                        }
+
+                        .meta-nav:hover + .wp-post-image {
+                            display: block;
+                        }
                     }
                 }
             }
         }
-
         .related-photos-container {
             h2 {
                 margin: 77px 0 52px;
                 font-size: 18px;
-                // font-family: Space Mono;
                 font-weight: normal;
                 text-transform: uppercase;
                 letter-spacing: 1.80px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    body.single-photo {
+        #main {
+            article.photo {
+                height: fit-content;
+    
+                .content-container {
+                    flex-direction: column-reverse;
+                    gap: 20px;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    height: fit-content;
+    
+                    .entry-content {
+                        flex: unset;
+                        width: 100%;
+    
+                        .entry-title {
+                            max-width: 100%;
+                        }
+                        p {
+                            max-width: 100%;
+                        }
+                    }
+                    .entry-thumbnail {
+                        flex: unset;
+                        width: 100%;
+                    }
+                }
+                .contact-navigation-wrapper {
+                    display: block;
+    
+                    .contact {
+                        flex: unset;
+                        width: 100%;
+                    }
+    
+                    .post-navigation-wrapper {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 430px) {
+    body.single-photo {
+        #main {
+            padding: 20px 0 24.4px;
+            width: 100%;
+            box-sizing: border-box;
+
+            article.photo {
+    
+                .content-container {
+                    padding: 0 55px;
+                    border-bottom: solid 1px black;
+    
+                    .entry-content {
+                        padding-bottom: 28px;
+                        border: none;
+    
+                        .entry-title {
+                            font-size: 46px;
+                            margin: 0 0 15px;
+                        }
+                        p {
+                            margin: 15px 0;
+                        }
+                    }
+                }
+                .contact-navigation-wrapper {
+                    display: block;
+                    height: fit-content;
+    
+                    .contact {
+                        box-sizing: border-box;
+                        padding: 24px 55px;
+
+                        .contact-btn {
+                            width: 100%;
+                            height: 50px;
+                        }
+                    }
+    
+                    .post-navigation-wrapper {
+                        display: none;
+                    }
+                }
+            }
+
+            .related-photos-container {
+                padding: 0 29px;
+                h2 {
+                    margin: 24px 0 20px;
+                }
             }
         }
     }

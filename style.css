@@ -454,7 +454,7 @@ a :visited {
 }
 @media screen and (max-width: 430px) {
   .home .photos-container {
-    padding: 26px 26px 48px;
+    padding: 26px 29px 48px;
     width: 100%;
     box-sizing: border-box;
   }
@@ -530,15 +530,21 @@ body.single-photo #main article.photo .contact-navigation-wrapper {
 body.single-photo #main article.photo .contact-navigation-wrapper .contact {
   flex: 0 1 calc(50% - 10px);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
+  padding: 24px 0;
 }
 body.single-photo #main article.photo .contact-navigation-wrapper .contact p {
   font-size: 14px;
+  margin: 0;
 }
 body.single-photo #main article.photo .contact-navigation-wrapper .contact .contact-btn {
-  width: 242px;
+  box-sizing: border-box;
+  width: clamp(82px, 100% - 207px, 242px);
   height: 34px;
+  padding: 8px 15px;
   border: none;
   background-color: var(--medium-grey);
   font-size: 12px;
@@ -548,14 +554,6 @@ body.single-photo #main article.photo .contact-navigation-wrapper .post-navigati
   flex: 0 1 calc(50% - 10px);
   position: relative;
 }
-body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .wp-post-image {
-  width: 81px;
-  height: 71px;
-  object-fit: cover;
-  position: absolute;
-  top: 8px;
-  right: 0;
-}
 body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .nav-links {
   display: flex;
   gap: 30px;
@@ -563,6 +561,19 @@ body.single-photo #main article.photo .contact-navigation-wrapper .post-navigati
   position: absolute;
   bottom: 12px;
   right: 0;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .nav-links .wp-post-image {
+  width: 81px;
+  height: 71px;
+  object-fit: cover;
+  display: none;
+  position: absolute;
+  top: -70px;
+  left: 0;
+  right: 0;
+}
+body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .nav-links .meta-nav:hover + .wp-post-image {
+  display: block;
 }
 body.single-photo #main .related-photos-container h2 {
   margin: 77px 0 52px;
@@ -572,6 +583,85 @@ body.single-photo #main .related-photos-container h2 {
   letter-spacing: 1.8px;
 }
 
+@media screen and (max-width: 760px) {
+  body.single-photo #main article.photo {
+    height: fit-content;
+  }
+  body.single-photo #main article.photo .content-container {
+    flex-direction: column-reverse;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: fit-content;
+  }
+  body.single-photo #main article.photo .content-container .entry-content {
+    flex: unset;
+    width: 100%;
+  }
+  body.single-photo #main article.photo .content-container .entry-content .entry-title {
+    max-width: 100%;
+  }
+  body.single-photo #main article.photo .content-container .entry-content p {
+    max-width: 100%;
+  }
+  body.single-photo #main article.photo .content-container .entry-thumbnail {
+    flex: unset;
+    width: 100%;
+  }
+  body.single-photo #main article.photo .contact-navigation-wrapper {
+    display: block;
+  }
+  body.single-photo #main article.photo .contact-navigation-wrapper .contact {
+    flex: unset;
+    width: 100%;
+  }
+  body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper {
+    display: none;
+  }
+}
+@media screen and (max-width: 430px) {
+  body.single-photo #main {
+    padding: 20px 0 24.4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  body.single-photo #main article.photo .content-container {
+    padding: 0 55px;
+    border-bottom: solid 1px black;
+  }
+  body.single-photo #main article.photo .content-container .entry-content {
+    padding-bottom: 28px;
+    border: none;
+  }
+  body.single-photo #main article.photo .content-container .entry-content .entry-title {
+    font-size: 46px;
+    margin: 0 0 15px;
+  }
+  body.single-photo #main article.photo .content-container .entry-content p {
+    margin: 15px 0;
+  }
+  body.single-photo #main article.photo .contact-navigation-wrapper {
+    display: block;
+    height: fit-content;
+  }
+  body.single-photo #main article.photo .contact-navigation-wrapper .contact {
+    box-sizing: border-box;
+    padding: 24px 55px;
+  }
+  body.single-photo #main article.photo .contact-navigation-wrapper .contact .contact-btn {
+    width: 100%;
+    height: 50px;
+  }
+  body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper {
+    display: none;
+  }
+  body.single-photo #main .related-photos-container {
+    padding: 0 29px;
+  }
+  body.single-photo #main .related-photos-container h2 {
+    margin: 24px 0 20px;
+  }
+}
 .photos-wrapper {
   width: 100%;
   display: flex;

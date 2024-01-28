@@ -50,16 +50,18 @@ while ( have_posts() ) :
             <section class="post-navigation-wrapper">
                 <?php $prev_photo = get_previous_post();
                 $next_photo = get_next_post();
-                if( $prev_photo) :
-                    echo get_the_post_thumbnail($prev_photo->ID,'thumbnail', ['class' => 'preview-nav prev']);
+                $prev_thumbnail = "";
+                $next_thumbnail = "";
+                if($prev_photo) :
+                    $prev_thumbnail = get_the_post_thumbnail($prev_photo->ID,'thumbnail', ['class' => 'preview-nav prev']);
                 endif;
-                if( $next_photo) :
-                    echo get_the_post_thumbnail($next_photo->ID,'thumbnail', ['class' => 'preview-nav next']);
+                if($next_photo) :
+                    $next_thumbnail = get_the_post_thumbnail($next_photo->ID,'thumbnail', ['class' => 'preview-nav next']);
                 endif;
                 the_post_navigation(
 		            [
-		            	'next_text' => '<img src="' . get_template_directory_uri() . '/assets/images/prev.svg" class="meta-nav" alt="accéder à la photo précédente">',
-		            	'prev_text' => '<img src="' . get_template_directory_uri() . '/assets/images/next.svg" class="meta-nav" alt="accéder à la photo précédente">',
+                        'prev_text' => '<img src="' . get_template_directory_uri() . '/assets/images/prev.svg" class="meta-nav" alt="accéder à la photo précédente">' . $prev_thumbnail,
+                        'next_text' => '<img src="' . get_template_directory_uri() . '/assets/images/next.svg" class="meta-nav" alt="accéder à la photo suivante">' . $next_thumbnail,
 		            ]
 	            ); ?>
             </section>

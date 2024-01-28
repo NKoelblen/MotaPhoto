@@ -34,7 +34,6 @@
             let options = element.nextElementSibling;
             let defaultValue = element.querySelector('.default');
             let checkedValue = element.querySelector('.checked');
-            console.log(checkedValue);
             if(open[key]) {
                 options.style.setProperty('display', 'block');
                 element.style.setProperty('--chevron', 'url(./assets/images/chevron-up.svg)');
