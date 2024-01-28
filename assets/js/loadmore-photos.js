@@ -1,7 +1,6 @@
 (function ($) {
     $(document).ready(function () {
 
-        let currentPage = 1;
         const nonce = document.querySelector('.js-lightbox').getAttribute('data-nonce');
 
         // Chargment des photos en Ajax
@@ -13,14 +12,13 @@
             // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
             const ajaxurl = $(this).data('ajaxurl');
 
-            const data = {
+            let data = {
                 action: $(this).data('action'), 
                 nonce:  $(this).data('nonce'),
-                query: JSON.stringify($(this).data('query-args')),
-                currentPage: currentPage++,
-                maxPage: $(this).data('max-page'),
+                query: JSON.stringify($(this).data('queryargs')),
+                nextPage: $(this).data('nextpage'),
+                maxPage: $(this).data('maxpage'),
             }
-            data['currentPage']++
 
             // Requête Ajax en JS natif via Fetch
             fetch(ajaxurl, {
@@ -42,9 +40,11 @@
 
                 // Et en cas de réussite
                 $('.photos-wrapper').append(body.data); // afficher le HTML
-                if ( data['currentPage'] === data['maxPage'] ) { 
+                let nextPage = $(this).data('nextpage') + 1;
+                if ( data['nextPage'] === data['maxPage'] ) { 
                     document.querySelector(".js-loadmore-photos").style.setProperty('display', 'none'); // if last page, remove the button
                 }
+                $(this).data('nextpage', nextPage);
                 let displayedPhotos = document.querySelectorAll('.single-photo').length;
                 let i = 0;
                 document.querySelectorAll(".js-lightbox").forEach(button => {

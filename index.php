@@ -111,8 +111,9 @@ get_header(); ?>
 		if( 1 < $photos_loop->max_num_pages ) : ?>
     		<button
 	    		class="js-loadmore-photos"
-				data-query-args='<?= json_encode($photos_loop->query) ?>'
-				data-max-page="<?= $photos_loop->max_num_pages ?>"
+				data-queryargs='<?= json_encode($photos_loop->query) ?>'
+				data-nextpage="2"
+				data-maxpage="<?= $photos_loop->max_num_pages ?>"
         		data-nonce="<?= wp_create_nonce('loadmore_photos'); ?>"
         		data-action="loadmore_photos"
         		data-ajaxurl="<?= admin_url( 'admin-ajax.php' ); ?>"

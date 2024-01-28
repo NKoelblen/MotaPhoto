@@ -98,7 +98,7 @@
                     return;
                 }
 
-                let queryArgs = JSON.stringify(body.data[2])
+                let queryArgs = body.data[2]
 
                 // Et en cas de réussite
                 $('.photos-wrapper').html(body.data[0]); // Afficher le HTML
@@ -106,7 +106,10 @@
                     document.querySelector(".js-loadmore-photos").style.setProperty('display', 'none'); // if last page, remove the button
                 } else {
                     document.querySelector(".js-loadmore-photos").style.setProperty('display', 'inline-block');
-                    document.querySelector(".js-loadmore-photos").setAttribute('data-query-args', queryArgs);
+
+                    $('.js-loadmore-photos').data('queryargs', queryArgs);
+                    $('.js-loadmore-photos').data('nextpage', 2);
+                    $('.js-loadmore-photos').data('maxpage', body.data[1]);
                 }
                 let displayedPhotos = document.querySelectorAll('.single-photo').length;
                 let i = 0;

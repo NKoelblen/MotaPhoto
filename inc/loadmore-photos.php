@@ -10,7 +10,7 @@ function loadmore_photos() {
 
   	// Requête des photos
     $photos_args = json_decode(stripslashes($_POST[ 'query' ]), true);
-    $photos_args['paged'] = $_POST['currentPage'];
+    $photos_args['paged'] = $_POST['nextPage'];
     $photos_loop = new WP_Query( $photos_args );
 
   	// Préparer le HTML des photos
