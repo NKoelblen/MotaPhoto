@@ -7,9 +7,9 @@
             // Empêcher l'envoi classique du formulaire
             e.preventDefault();
 
-            document.querySelector('#lightbox').style.setProperty('display', 'flex');
+            $('#lightbox').css('display', 'flex');
             $('#lightbox .close-btn').click( function() {
-                document.querySelector('#lightbox').style.setProperty('display', 'none');
+                $('#lightbox').css('display', 'none');
             })
 
             // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
@@ -18,9 +18,9 @@
             const data = {
                 action: $(this).data('action'), 
                 nonce:  $(this).data('nonce'),
-                query: JSON.stringify($(this).data('query-args')),
-                currentPhoto: $(this).data('current-photo'),
-                postsPerPage: $(this).data('posts-per-page'),
+                query: JSON.stringify($(this).data('query')),
+                currentPhoto: $(this).data('currentphoto'),
+                postsPerPage: $(this).data('postsperpage'),
             }
 
             // Requête Ajax
@@ -45,32 +45,29 @@
                 let slides = body.data['photos'];
                 let nbSlides = slides.length;
                 let i = body.data['current-photo'];
+
                 $('#lightbox .photo').html(slides[i]['photo']);
                 $('#lightbox .informations').replaceWith(slides[i]['informations']);
-                document.querySelectorAll("#lightbox .nav-link").forEach(navLink => {
-                	navLink.addEventListener("click", () => {
-                		if (navLink === document.querySelector("#lightbox .nav-previous")) {
-                			if (i === 0) {
-                				i = nbSlides - 1;
-                			}
-                			else {
-                			i--;
-                			}
+                $("#lightbox .nav-link").on("click", function() {
+                	if ($(this).html() === $("#lightbox .nav-previous").html()) {
+                		if (i === 0) {
+                			i = nbSlides - 1;
                 		}
-                		else if (navLink === document.querySelector("#lightbox .nav-next")) {
-                			if (i === nbSlides - 1) {
-                				i = 0;
-                			} else {
-                			i++;
-                			}
+                		else {
+                		i--;
                 		}
-                        $('#lightbox .photo').html(slides[i]['photo']);
-                        $('#lightbox .informations').replaceWith(slides[i]['informations']);
-                	});
+                	}
+                	else if ($(this).html() === $("#lightbox .nav-next").html()) {
+                		if (i === nbSlides - 1) {
+                			i = 0;
+                		} else {
+                		i++;
+                		}
+                	}
+                    $('#lightbox .photo').html(slides[i]['photo']);
+                    $('#lightbox .informations').replaceWith(slides[i]['informations']);
                 });
-
             });
         });
-        
     });
 })(jQuery);

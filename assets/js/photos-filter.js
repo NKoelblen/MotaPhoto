@@ -1,34 +1,36 @@
 (function ($) {
     $(document).ready(function () {
 
-        const filterForm = document.getElementById( 'js-photos-filter' );
-        const dropdowns = filterForm.querySelectorAll(".select p");
-        const nonce = document.querySelector('.js-lightbox').getAttribute('data-nonce');
+        const filterForm = $( '#js-photos-filter' );
+        const dropdowns = filterForm.find(".select p");
+        const nonce = $('.js-lightbox').attr('data-nonce');
 
         let open = [];
-        Object.entries(dropdowns).forEach(dropdown => {
-            const [key, value] = dropdown;
+
+        dropdowns.each(function (key, val) {
             open[key] = false;
-            window.addEventListener('click', function(e){
-                if (value.contains(e.target)){
-                    isOpen(value, key);
+            $(window).on('click', function(e){
+                if (val === e.target){
+                    isOpen(val, key);
                 } else if(open[key]) {
-                    isOpen(value, key);
-                }
-            });
-        });
-        filterForm.querySelectorAll("input").forEach(option => {
-            let dropdown = option.parentNode.parentNode.parentNode.querySelector("p");
-            option.addEventListener("change", () => {
-                photosFilter();
-                if(option.previousElementSibling.innerHTML) {
-                    dropdown.querySelector('.checked').innerHTML = option.previousElementSibling.innerHTML;
-                } else {
-                    dropdown.querySelector('.checked').innerHTML = dropdown.querySelector('.default').innerHTML;
+                    isOpen(val, key);
                 }
             });
         });
 
+        let options = filterForm.find("input");
+            options.each(function() {
+                $(this).on("change", () => {
+                    let dropdown = $(this).closest('.options').siblings('p');
+                    photosFilter();
+                    if($(this).siblings('label').html()) {
+                        dropdown.find('.checked').html($(this).siblings('label').html());
+                    } else {
+                        dropdown.find('.checked').html(dropdown.find('.default').html());
+                    }
+                });
+            });
+        
         function isOpen(element, key) {
             open[key] = !open[key];
             let options = element.nextElementSibling;
@@ -54,27 +56,29 @@
         function photosFilter() {
 
             // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
-            const ajaxurl = filterForm.getAttribute('action');
+            const ajaxurl = filterForm.attr('action');
 
             // Les données de notre formulaire
+            
+            let checkedCategory = filterForm.find('input[name="category"]:checked');
+            let checkedFormat = filterForm.find( 'input[name="format"]:checked' );
+            let checkedSort = filterForm.find('input[name="sort"]:checked');
+
             let category = "";
-            let checkedCategory = filterForm.querySelector('input[name="category"]:checked');
+            if(checkedCategory.length) {
+                category = checkedCategory.val();
+            }
             let format = "";
-            let checkedFormat = filterForm.querySelector( 'input[name="format"]:checked' );
+            if(checkedFormat.length) {
+                format = checkedFormat.val();
+            }
             let sort = "ASC";
-            let checkedSort = filterForm.querySelector('input[name="sort"]:checked');
-            if(checkedCategory) {
-                category = checkedCategory.value;
-            }
-            if(checkedFormat) {
-                format = checkedFormat.value;
-            }
-            if(checkedSort) {
-                sort = checkedSort.value;
+            if(checkedSort.length) {
+                sort = checkedSort.val();
             }
             const data = {
-                action: filterForm.querySelector('input[name=action]').value, 
-                nonce:  filterForm.querySelector('input[name=nonce]').value,
+                action: filterForm.find('input[name=action]').val(), 
+                nonce:  filterForm.find('input[name=nonce]').val(),
                 category: category,
                 format: format,
                 sort: sort,
@@ -98,32 +102,32 @@
                     return;
                 }
 
-                let queryArgs = body.data[2]
+                let query = body.data['query'];
 
                 // Et en cas de réussite
-                $('.photos-wrapper').html(body.data[0]); // Afficher le HTML
-                if ( body.data[1] < 2 ) {
-                    document.querySelector(".js-loadmore-photos").style.setProperty('display', 'none'); // if last page, remove the button
+                $('.photos-wrapper').html(body.data['photos']); // Afficher le HTML
+                if ( body.data['max-page'] < 2 ) {
+                    $(".js-loadmore-photos").css('display', 'none');
                 } else {
-                    document.querySelector(".js-loadmore-photos").style.setProperty('display', 'inline-block');
-
-                    $('.js-loadmore-photos').data('queryargs', queryArgs);
-                    $('.js-loadmore-photos').data('nextpage', 2);
-                    $('.js-loadmore-photos').data('maxpage', body.data[1]);
+                    $(".js-loadmore-photos").css('display', 'inline-block');
+                    $('.js-loadmore-photos').data({
+                        'query': query,
+                        'nextpage': 2,
+                        'maxpage': body.data['max-page']
+                    });
                 }
-                let displayedPhotos = document.querySelectorAll('.single-photo').length;
+                let displayedPhotos = $('.single-photo').length;
                 let i = 0;
-                document.querySelectorAll(".js-lightbox").forEach(button => {
-                    button.setAttribute('data-nonce', nonce);
-                    button.setAttribute('data-query-args', queryArgs);
-                    button.setAttribute('data-posts-per-page', displayedPhotos);
-                    button.setAttribute('data-current-photo', i);
+                $(".js-lightbox").each(function() {
+                    $(this).data({
+                        'nonce': nonce,
+                        'query': query,
+                        'postsperpage': displayedPhotos,
+                        'currentphoto': i
+                    });
                     i++
                 })
             });
         }
-
-
-
     });
 })(jQuery);

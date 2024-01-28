@@ -111,7 +111,7 @@ get_header(); ?>
 		if( 1 < $photos_loop->max_num_pages ) : ?>
     		<button
 	    		class="js-loadmore-photos"
-				data-queryargs='<?= json_encode($photos_loop->query) ?>'
+				data-query='<?= json_encode($photos_loop->query) ?>'
 				data-nextpage="2"
 				data-maxpage="<?= $photos_loop->max_num_pages ?>"
         		data-nonce="<?= wp_create_nonce('loadmore_photos'); ?>"

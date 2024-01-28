@@ -12,9 +12,9 @@ global $photos_loop; ?>
     <div class="overlay">
         <button
 	        class="js-lightbox"
-            data-query-args='<?= json_encode($photos_loop->query); ?>'
-            data-current-photo=<?= $photos_loop->current_post; ?>
-            data-posts-per-page=<?= $photos_loop->post_count; ?>
+            data-query='<?= json_encode($photos_loop->query); ?>'
+            data-currentphoto=<?= $photos_loop->current_post; ?>
+            data-postsperpage=<?= $photos_loop->post_count; ?>
             data-nonce="<?= wp_create_nonce('lightbox'); ?>"
             data-action="lightbox"
             data-ajaxurl="<?= admin_url('admin-ajax.php'); ?>"

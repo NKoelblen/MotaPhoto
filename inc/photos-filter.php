@@ -54,6 +54,6 @@ function photos_filter() {
             get_template_part( 'template-parts/photos-loop' );
         endwhile;
         wp_reset_postdata();
-        wp_send_json_success([ob_get_clean(), $photos_loop->max_num_pages, $photos_loop->query]); // Envoyer les données au navigateur
+        wp_send_json_success(['photos' => ob_get_clean(), 'max-page' => $photos_loop->max_num_pages, 'query' => $photos_loop->query]); // Envoyer les données au navigateur
     endif;	
 }

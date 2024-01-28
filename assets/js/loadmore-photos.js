@@ -1,7 +1,7 @@
 (function ($) {
     $(document).ready(function () {
 
-        const nonce = document.querySelector('.js-lightbox').getAttribute('data-nonce');
+        const nonce = $('.js-lightbox').attr('data-nonce');
 
         // Chargment des photos en Ajax
         $('.js-loadmore-photos').click(function (e) {
@@ -15,7 +15,7 @@
             let data = {
                 action: $(this).data('action'), 
                 nonce:  $(this).data('nonce'),
-                query: JSON.stringify($(this).data('queryargs')),
+                query: JSON.stringify($(this).data('query')),
                 nextPage: $(this).data('nextpage'),
                 maxPage: $(this).data('maxpage'),
             }
@@ -42,16 +42,18 @@
                 $('.photos-wrapper').append(body.data); // afficher le HTML
                 let nextPage = $(this).data('nextpage') + 1;
                 if ( data['nextPage'] === data['maxPage'] ) { 
-                    document.querySelector(".js-loadmore-photos").style.setProperty('display', 'none'); // if last page, remove the button
+                    $(".js-loadmore-photos").css('display', 'none'); // if last page, remove the button
                 }
                 $(this).data('nextpage', nextPage);
-                let displayedPhotos = document.querySelectorAll('.single-photo').length;
+                let displayedPhotos = $('.single-photo').length;
                 let i = 0;
-                document.querySelectorAll(".js-lightbox").forEach(button => {
-                    button.setAttribute('data-nonce', nonce);
-                    button.setAttribute('data-query-args', data['query']);
-                    button.setAttribute('data-posts-per-page', displayedPhotos);
-                    button.setAttribute('data-current-photo', i);
+                $(".js-lightbox").each(function () {
+                    $(this).attr({
+                        'data-nonce': nonce,
+                        'data-query': data['query'],
+                        'data-posts-per-page': displayedPhotos,
+                        'data-current-photo' :i
+                    });
                     i++
                 })
 
