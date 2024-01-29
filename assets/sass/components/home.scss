@@ -71,20 +71,28 @@
                     }
                 }
                 .options {
+                    --display: flex;
                     display: none;
+                    flex-direction: column;
+                    overflow: hidden;
                     position: absolute;
                     left: 0;
                     z-index: 1;
                     width: 260px;
-                    background-color: white;
-                    border-radius: 0 0 8px 8px;
-                    overflow: hidden;
+                    height: 0;
+                    margin: 0;
+                    padding: 0;
 
-                    div {
-                        box-sizing: border-box;
+                    li {
+                        display: flex;
                         width: 100%;
-                        height: 42px;
-                        padding: 11px 24px;
+                        vertical-align: middle;
+                        align-items: center;
+                        background-color: white;
+
+                        &:last-child{
+                            border-radius: 0 0 8px 8px;
+                        }
 
                         &:hover {
                             background-color: var(--tertiary-red);
@@ -101,12 +109,24 @@
                             visibility: hidden;
                         }
                         label {
+                            display: flex;
+                            align-items: center;
                             font-size: 12px;
-                            display: block;
+                            line-height: 12px;
+                            box-sizing: border-box;
                             width: 100%;
-                            height: 100%;
+                            height: 42px;
+                            padding: 0 24px;
                             cursor: pointer;
                         }
+                    }
+                    &.open {
+                        display: var(--display);
+                        animation: open 500ms ease-in-out forwards;
+                    }
+                    &.close {
+                        animation: close 500ms ease-in-out forwards;
+                        display: none;
                     }
                 }
             }

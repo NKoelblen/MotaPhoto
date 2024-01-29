@@ -41,18 +41,18 @@ get_header(); ?>
 			); ?>
 			<div id="categories" class="select">
 				<p><span class="default">Catégories</span><span class="checked">Catégories</span></p>
-				<div class="options">
-					<div>
+				<ul class="options">
+					<li>
 						<label for="category-empty"></label>
 						<input type="radio" id="category-empty" name="category" value=""/>
-					</div>
+					</li>
 					<?php foreach($categories as $category) : ?>
-						<div>
+						<li>
 							<label for="<?= $category->slug; ?>"><?= $category->name; ?></label>
 							<input type="radio" id="<?= $category->slug; ?>" name="category" value="<?= $category->slug; ?>"/>
-						</div>
+					</li>
 					<?php endforeach; ?>
-				</div>
+					</ul>
 			</div>
 			<?php $formats = get_terms(
 				[
@@ -64,31 +64,31 @@ get_header(); ?>
 			); ?>
 			<div id="formats" class="select">
 				<p><span class="default">Formats</span><span class="checked">Formats</span></p>
-				<div class="options">
-					<div>
+				<ul class="options">
+					<li>
 						<label for="format-empty"></label>
 						<input type="radio" id="format-empty" name="format" value=""/>
-					</div>
+					</li>
 					<?php foreach($formats as $format) : ?>
-						<div>
+						<li>
 							<label for="<?= $format->slug; ?>"><?= $format->name; ?></label>
 							<input type="radio" id="<?= $format->slug; ?>" name="format" value="<?= $format->slug; ?>"/>
-						</div>
+						</li>
 					<?php endforeach; ?>
-				</div>
+				</ul>
 			</div>
 			<div id="sort" class="select">
 				<p><span class="default">Trier par</span><span class="checked">Trier par</span></p>
-				<div class="options">
-					<div>
+				<ul class="options">
+					<li>
 						<label for="DESC">à partir des plus récentes</label>
 						<input type="radio" id="DESC" name="sort" value="DESC"/>
-					</div>
-					<div>
+					</li>
+					<li>
 						<label for="ASC">à partir des plus anciennes</label>
 						<input type="radio" id="ASC" name="sort" value="ASC"/>
-					</div>
-				</div>
+					</li>
+				</ul>
 			</div>
 		</form>
         <?php $photos_args = [

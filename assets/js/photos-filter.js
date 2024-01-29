@@ -10,7 +10,7 @@
         dropdowns.each(function (key, val) {
             open[key] = false;
             $(window).on('click', function(e){
-                if (val === e.target){
+                if (val.contains(e.target)){
                     isOpen(val, key);
                 } else if(open[key]) {
                     isOpen(val, key);
@@ -37,14 +37,18 @@
             let defaultValue = element.querySelector('.default');
             let checkedValue = element.querySelector('.checked');
             if(open[key]) {
-                options.style.setProperty('display', 'block');
+                options.classList.remove("close");
+                options.classList.add("open");
+                options.style.setProperty('--height', options.scrollHeight + "px");
+                options.style.setProperty('height', 'var(--height)');
                 element.style.setProperty('--chevron', 'url(./assets/images/chevron-up.svg)');
                 element.style.setProperty('border-radius', '8px 8px 0 0');
                 element.style.setProperty('border-color', '#215AFF');
                 defaultValue.style.setProperty('display', 'inline');
                 checkedValue.style.setProperty('display', 'none');
             } else {
-                options.style.setProperty('display', 'none');
+                options.classList.remove("open");
+                options.classList.add("close");
                 element.style.setProperty('--chevron', 'url(./assets/images/chevron-down.svg)');
                 element.style.setProperty('border-radius', '8px');
                 element.style.setProperty('border-color', '#B8BBC2');
