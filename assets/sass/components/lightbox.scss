@@ -1,4 +1,5 @@
 #lightbox {
+    --display: flex;
     display: none;
     position: fixed;
     top: 0;
@@ -11,6 +12,15 @@
     padding: clamp(8px, 3.82vw, 55px) clamp(8px, 3.47vw, 50px);
     gap: clamp(8px, 4.17vw, 60px);
     align-items: center;
+
+    &.open {
+        display: var(--display);
+        animation: fadein 500ms ease-in-out forwards;
+    }
+    &.close {
+        animation: fadeout 500ms ease-in-out forwards;
+        display: none;
+    }
 
     .close-btn {
         background: none;

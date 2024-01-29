@@ -1,9 +1,17 @@
-@keyframes fade {
+@keyframes fadein {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
+    }
+}
+@keyframes fadeout {
+    from {
+        display: var(--display);
+    }
+    to {
+        opacity: 0;
     }
 }
 

@@ -90,12 +90,20 @@ body h1, body h2, body h3 {
   font-family: "Space Mono";
 }
 
-@keyframes fade {
+@keyframes fadein {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    display: var(--display);
+  }
+  to {
+    opacity: 0;
   }
 }
 @keyframes open {
@@ -789,6 +797,7 @@ body.single-photo #main .related-photos-container h2 {
   }
 }
 #lightbox {
+  --display: flex;
   display: none;
   position: fixed;
   top: 0;
@@ -801,6 +810,14 @@ body.single-photo #main .related-photos-container h2 {
   padding: clamp(8px, 3.82vw, 55px) clamp(8px, 3.47vw, 50px);
   gap: clamp(8px, 4.17vw, 60px);
   align-items: center;
+}
+#lightbox.open {
+  display: var(--display);
+  animation: fadein 500ms ease-in-out forwards;
+}
+#lightbox.close {
+  animation: fadeout 500ms ease-in-out forwards;
+  display: none;
 }
 #lightbox .close-btn {
   background: none;

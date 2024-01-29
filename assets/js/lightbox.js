@@ -4,14 +4,14 @@
         // Chargment des photos en Ajax
         $(".photos-wrapper").on("click", ".js-lightbox", function( e ) {
 
-            console.log($(this))
-
             // Empêcher l'envoi classique du formulaire
             e.preventDefault();
 
-            $('#lightbox').css('display', 'flex');
+            $('#lightbox').removeClass('close');
+            $('#lightbox').addClass('open');
             $('#lightbox .close-btn').click( function() {
-                $('#lightbox').css('display', 'none');
+                $('#lightbox').addClass('close');
+                $('#lightbox').removeClass('open');
             })
 
             // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
@@ -24,8 +24,6 @@
                 currentPhoto: $(this).data('currentphoto'),
                 postsPerPage: $(this).data('postsperpage'),
             }
-
-            console.log(data);
 
             // Requête Ajax
             fetch(ajaxurl, {
