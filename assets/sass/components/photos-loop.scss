@@ -11,7 +11,8 @@
         position: relative;
 
         &:hover .overlay {
-            display: flex;
+            opacity: 1;
+            transition: opacity 250ms ease-in-out;
         }
 
         .wp-post-image {
@@ -21,7 +22,7 @@
         }
 
         .overlay {
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
@@ -33,6 +34,8 @@
             background-color: rgba(0, 0, 0, 0.6);
             color: white;
             padding: 12px 18px;
+            opacity: 0;
+            transition: opacity 250ms ease-in-out;
 
             .js-lightbox {
                 background: none;
