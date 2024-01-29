@@ -4,6 +4,8 @@
         // Chargment des photos en Ajax
         $(".photos-wrapper").on("click", ".js-lightbox", function( e ) {
 
+            console.log($(this))
+
             // Empêcher l'envoi classique du formulaire
             e.preventDefault();
 
@@ -22,6 +24,8 @@
                 currentPhoto: $(this).data('currentphoto'),
                 postsPerPage: $(this).data('postsperpage'),
             }
+
+            console.log(data);
 
             // Requête Ajax
             fetch(ajaxurl, {

@@ -51,8 +51,8 @@
                     $(this).attr({
                         'data-nonce': nonce,
                         'data-query': data['query'],
-                        'data-posts-per-page': displayedPhotos,
-                        'data-current-photo' :i
+                        'data-postsperpage': displayedPhotos,
+                        'data-currentphoto' :i
                     });
                     i++
                 })
