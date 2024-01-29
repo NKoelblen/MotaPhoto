@@ -1,0 +1,26 @@
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes open {
+    from {
+        height: 0;
+    }
+    to {
+        height: var(--height);
+    }
+}
+
+@keyframes close {
+    from {
+        display: var(--display);
+    }
+    to {
+        height: 0;
+    }
+}

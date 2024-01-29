@@ -43,13 +43,15 @@
         position: sticky;
         top: 0;
         width: 100vw;
-        z-index: 1;
+        z-index: 2;
     
         .site-logo {
             height: 9px;
         }
 
         #primary-menu-list {
+            --display: flex;
+            --height: calc(100vh - var(--navbar));
             display: none;
             position: absolute;
             z-index: 1;
@@ -57,12 +59,23 @@
             left: 0;
             right: 0;
             width: 100vw;
-            height: calc(100vh - var(--navbar));
+            height: var(--height);
             background-color: var(--red);
             flex-direction: column;
+            flex-wrap: nowrap;
             align-items: center;
             justify-content: center;
             gap: 18px;
+            overflow: hidden;
+
+            &.open {
+                display: var(--display);
+                animation: open 500ms ease-in-out forwards;
+            }
+            &.close {
+                animation: close 500ms ease-in-out forwards;
+                display: none;
+            }
     
             a, .contact-btn {
                 font-size: 44px;

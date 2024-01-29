@@ -90,6 +90,30 @@ body h1, body h2, body h3 {
   font-family: "Space Mono";
 }
 
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes open {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
+}
+@keyframes close {
+  from {
+    display: var(--display);
+  }
+  to {
+    height: 0;
+  }
+}
 body {
   margin: 0 auto;
 }
@@ -167,12 +191,14 @@ button {
     position: sticky;
     top: 0;
     width: 100vw;
-    z-index: 1;
+    z-index: 2;
   }
   #masthead .site-logo {
     height: 9px;
   }
   #masthead #primary-menu-list {
+    --display: flex;
+    --height: calc(100vh - var(--navbar));
     display: none;
     position: absolute;
     z-index: 1;
@@ -180,12 +206,22 @@ button {
     left: 0;
     right: 0;
     width: 100vw;
-    height: calc(100vh - var(--navbar));
+    height: var(--height);
     background-color: var(--red);
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     gap: 18px;
+    overflow: hidden;
+  }
+  #masthead #primary-menu-list.open {
+    display: var(--display);
+    animation: open 500ms ease-in-out forwards;
+  }
+  #masthead #primary-menu-list.close {
+    animation: close 500ms ease-in-out forwards;
+    display: none;
   }
   #masthead #primary-menu-list a, #masthead #primary-menu-list .contact-btn {
     font-size: 44px;
@@ -409,40 +445,59 @@ button {
   display: none;
 }
 .home .photos-container #js-photos-filter .select .options {
+  --display: flex;
   display: none;
+  flex-direction: column;
+  overflow: hidden;
   position: absolute;
   left: 0;
   z-index: 1;
   width: 260px;
-  background-color: white;
-  border-radius: 0 0 8px 8px;
-  overflow: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
 }
-.home .photos-container #js-photos-filter .select .options div {
-  box-sizing: border-box;
+.home .photos-container #js-photos-filter .select .options li {
+  display: flex;
   width: 100%;
-  height: 42px;
-  padding: 11px 24px;
+  vertical-align: middle;
+  align-items: center;
+  background-color: white;
 }
-.home .photos-container #js-photos-filter .select .options div:hover {
+.home .photos-container #js-photos-filter .select .options li:last-child {
+  border-radius: 0 0 8px 8px;
+}
+.home .photos-container #js-photos-filter .select .options li:hover {
   background-color: var(--tertiary-red);
 }
-.home .photos-container #js-photos-filter .select .options div:active {
+.home .photos-container #js-photos-filter .select .options li:active {
   background-color: var(--secondary-red);
 }
-.home .photos-container #js-photos-filter .select .options div:has(input:checked) {
+.home .photos-container #js-photos-filter .select .options li:has(input:checked) {
   background-color: var(--red);
   color: white;
 }
-.home .photos-container #js-photos-filter .select .options div input {
+.home .photos-container #js-photos-filter .select .options li input {
   visibility: hidden;
 }
-.home .photos-container #js-photos-filter .select .options div label {
+.home .photos-container #js-photos-filter .select .options li label {
+  display: flex;
+  align-items: center;
   font-size: 12px;
-  display: block;
+  line-height: 12px;
+  box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 42px;
+  padding: 0 24px;
   cursor: pointer;
+}
+.home .photos-container #js-photos-filter .select .options.open {
+  display: var(--display);
+  animation: open 500ms ease-in-out forwards;
+}
+.home .photos-container #js-photos-filter .select .options.close {
+  animation: close 500ms ease-in-out forwards;
+  display: none;
 }
 .home .photos-container .js-loadmore-photos {
   box-sizing: border-box;
