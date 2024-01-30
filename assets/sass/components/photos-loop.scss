@@ -6,10 +6,12 @@
     row-gap: 20px;
 
     .single-photo {
+        --translate: 17.19vw;
         flex: 0 1 calc(50% - 10px);
         height: 34.38vw;
         position: relative;
-        animation: fadein 1000ms ease-in-out;
+        animation: 1000ms ease-in-out;
+        animation-name: fadein, translate;
 
         &:hover .overlay {
             opacity: 1;

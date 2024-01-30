@@ -15,6 +15,15 @@
     }
 }
 
+@keyframes translate {
+    from {
+        transform: translateY(var(--translate));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 @keyframes open {
     from {
         height: 0;

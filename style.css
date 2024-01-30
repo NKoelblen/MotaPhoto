@@ -106,6 +106,14 @@ body h1, body h2, body h3 {
     opacity: 0;
   }
 }
+@keyframes translate {
+  from {
+    transform: translateY(var(--translate));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 @keyframes open {
   from {
     height: 0;
@@ -743,10 +751,12 @@ body.single-photo #main .related-photos-container h2 {
   row-gap: 20px;
 }
 .photos-wrapper .single-photo {
+  --translate: 17.19vw;
   flex: 0 1 calc(50% - 10px);
   height: 34.38vw;
   position: relative;
-  animation: fadein 1000ms ease-in-out;
+  animation: 1000ms ease-in-out;
+  animation-name: fadein, translate;
 }
 .photos-wrapper .single-photo:hover .overlay {
   opacity: 1;
