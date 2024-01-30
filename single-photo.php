@@ -74,6 +74,7 @@ while ( have_posts() ) :
             'post_type' => 'photo',
             'post_status' => 'published',
             'post__not_in' => [get_the_ID()],
+            'orderby' => 'rand',
             'posts_per_page' => '2',
             'tax_query' => [
                 [

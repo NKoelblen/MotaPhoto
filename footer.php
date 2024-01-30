@@ -16,7 +16,10 @@
 			</div>
 		    <div class="photo-container animated">
 				<div class="photo"></div>
-		    	<div class="informations"></div>
+		    	<div class="informations">
+					<p class='entry-title'></p>
+					<p class="category"></p>
+				</div>
 		    </div>
 		    <div class="nav-link nav-next">
 		    	<span>Suivante</span>

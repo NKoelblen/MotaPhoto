@@ -1,55 +1,32 @@
 (function ($) {
     $(document).ready(function () {
 
-        // Chargment des photos en Ajax
+        // Chargement des photos en Ajax
         $(".photos-wrapper").on("click", ".js-lightbox", function( e ) {
-
-            // Empêcher l'envoi classique du formulaire
-            e.preventDefault();
 
             $('#lightbox').removeClass('close');
             $('#lightbox').addClass('open');
             $('#lightbox .close-btn').click( function() {
                 $('#lightbox').addClass('close');
                 $('#lightbox').removeClass('open');
-            })
+            });
 
-            // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
-            const ajaxurl = $(this).data('ajaxurl');
+            let slides = $('.photos-wrapper .single-photo').map(function(){
+                return {
+                    photo: $(this).find('.wp-post-image'),
+                    title: $(this).find('.informations .entry-title').text(),
+                    category: $(this).find('.informations p').text(),
+                    currentPhoto: $(this).find('.js-lightbox').data('currentphoto')
+                };
+            }).get();
 
-            const data = {
-                action: $(this).data('action'), 
-                nonce:  $(this).data('nonce'),
-                query: JSON.stringify($(this).data('query')),
-                currentPhoto: $(this).data('currentphoto'),
-                postsPerPage: $(this).data('postsperpage'),
-            }
-
-            // Requête Ajax
-            fetch(ajaxurl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Cache-Control': 'no-cache',
-                },
-                body: new URLSearchParams(data),
-            })
-            .then(response => response.json())
-            .then(body => {
-
-                // En cas d'erreur
-                if (!body.success) {
-                    alert(response.data);
-                    return;
-                }
-
-                // Et en cas de réussite
-                let slides = body.data['photos'];
+            if($(this).has(e.target).length > 0) {
                 let nbSlides = slides.length;
-                let i = body.data['current-photo'];
+                let i = $(this).data('currentphoto');
+                $('#lightbox .photo').html(slides[i]['photo'].clone());
+                $('#lightbox .entry-title').html(slides[i]['title']);
+                $('#lightbox .category').html(slides[i]['category']);
 
-                $('#lightbox .photo').html(slides[i]['photo']);
-                $('#lightbox .informations').replaceWith(slides[i]['informations']);
                 $("#lightbox .nav-link").on("click", function() {
                 	if ($(this).html() === $("#lightbox .nav-previous").html()) {
                 		if (i === 0) {
@@ -66,14 +43,16 @@
                 		i++;
                 		}
                 	}
-                    $('#lightbox .photo').html(slides[i]['photo']);
+                    $('#lightbox .photo').html(slides[i]['photo'].clone());
                     $('#lightbox .photo-container').removeClass('animated');
                     window.requestAnimationFrame(function() {
                         $('#lightbox .photo-container').addClass('animated');
                       });
-                    $('#lightbox .informations').replaceWith(slides[i]['informations']);
+                    $('#lightbox .entry-title').html(slides[i]['title']);
+                    $('#lightbox .category').html(slides[i]['category']);
                 });
-            });
+
+            }
         });
     });
 })(jQuery);

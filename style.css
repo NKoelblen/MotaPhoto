@@ -805,7 +805,7 @@ body.single-photo #main .related-photos-container h2 {
   justify-content: space-between;
   gap: 18px;
 }
-.photos-wrapper .single-photo .overlay .informations .entry-title, .photos-wrapper .single-photo .overlay .informations p {
+.photos-wrapper .single-photo .overlay .informations .entry-title, .photos-wrapper .single-photo .overlay .informations .category {
   margin: 0;
   font-size: 14px;
   font-family: "Poppins";
@@ -889,7 +889,7 @@ body.single-photo #main .related-photos-container h2 {
   width: 100%;
   margin-top: 19px;
 }
-#lightbox .photo-container .informations .entry-title, #lightbox .photo-container .informations .categorie {
+#lightbox .photo-container .informations .entry-title, #lightbox .photo-container .informations .category {
   color: white;
   font-family: "Poppins";
   font-size: 14px;
