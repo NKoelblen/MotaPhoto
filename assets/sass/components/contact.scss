@@ -27,9 +27,9 @@
         flex-direction: column;
         box-sizing: border-box;
         width: min(74.67vw, 587px);
-        height: min(74.67vh, 769px);
+        max-height: calc(100vh - 20px);
         background-color: white;
-        border: var(--black solid 5px);
+        border: black solid 5px;
         align-items: center;
         overflow-x: hidden;
         overflow-y: scroll;
@@ -110,9 +110,10 @@
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 431px) {
     #contact-outer #contact-inner {
-        height: min(74.67vh, 577px);
+        height: auto;
+        max-height: calc(100vh - 23.73vw);
         border-width: 3px;
 
         h2 {

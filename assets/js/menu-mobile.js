@@ -30,11 +30,3 @@ function closemenu() {
     menuUL.classList.remove("open");
     menuUL.classList.add("close");
 }
-
-window.addEventListener("resize", () => {
-    if (window.matchMedia("(min-width: 430px)").matches) {
-        menuUL.style.setProperty('display', 'flex', 'important');
-    } else {
-        menuUL.style.setProperty('display', 'none', 'important');
-    }
-});
