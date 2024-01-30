@@ -635,6 +635,7 @@ body.single-photo #main article.photo .contact-navigation-wrapper .post-navigati
 }
 body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .nav-links {
   display: flex;
+  width: 82px;
   gap: 30px;
   justify-content: flex-end;
   position: absolute;
@@ -645,14 +646,17 @@ body.single-photo #main article.photo .contact-navigation-wrapper .post-navigati
   width: 81px;
   height: 71px;
   object-fit: cover;
-  display: none;
   position: absolute;
   top: -70px;
   left: 0;
   right: 0;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
 }
 body.single-photo #main article.photo .contact-navigation-wrapper .post-navigation-wrapper .nav-links .meta-nav:hover + .wp-post-image {
   display: block;
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
 }
 body.single-photo #main .related-photos-container h2 {
   margin: 77px 0 52px;
