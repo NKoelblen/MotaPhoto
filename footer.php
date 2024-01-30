@@ -14,8 +14,8 @@
 		    	<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-prev.svg'; ?> " alt="photo précédente">
 		    	<span>Précédente</span>
 			</div>
-		    <div class="photo-container">
-				<div class="photo animated"></div>
+		    <div class="photo-container animated">
+				<div class="photo"></div>
 		    	<div class="informations"></div>
 		    </div>
 		    <div class="nav-link nav-next">

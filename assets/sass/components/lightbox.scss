@@ -46,12 +46,16 @@
     .photo-container {
         width: fit-content;
         margin: auto;
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: center;
 
+        &.animated {
+            display: flex;
+            animation: fadein 500ms ease-in-out;
+        }
+
         .photo {
-            display: none;
             width: fit-content;
             height: fit-content;
 
@@ -60,10 +64,6 @@
                 height: fit-content;
                 max-height: calc(100vh - clamp(8px, 3.82vw, 55px) * 2 - 40px);
                 object-fit: contain;
-            }
-            &.animated {
-                display: inline-block;
-                animation: fadein 500ms ease-in-out;
             }
         }
         .informations {

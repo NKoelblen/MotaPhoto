@@ -67,10 +67,9 @@
                 		}
                 	}
                     $('#lightbox .photo').html(slides[i]['photo']);
-                    $('#lightbox .photo').css('animation', 'fadein 500ms ease-in-out');
-                    $('#lightbox .photo').removeClass('animated');
+                    $('#lightbox .photo-container').removeClass('animated');
                     window.requestAnimationFrame(function() {
-                        $('#lightbox .photo').addClass('animated');
+                        $('#lightbox .photo-container').addClass('animated');
                       });
                     $('#lightbox .informations').replaceWith(slides[i]['informations']);
                 });
