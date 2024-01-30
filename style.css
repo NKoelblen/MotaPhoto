@@ -755,7 +755,10 @@ body.single-photo #main .related-photos-container h2 {
   flex: 0 1 calc(50% - 10px);
   height: 34.38vw;
   position: relative;
-  animation: 1000ms ease-in-out;
+  opacity: 0;
+}
+.photos-wrapper .single-photo.animated {
+  animation: 1000ms ease-in-out forwards;
   animation-name: fadein, translate;
 }
 .photos-wrapper .single-photo:hover .overlay {

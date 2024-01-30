@@ -10,8 +10,12 @@
         flex: 0 1 calc(50% - 10px);
         height: 34.38vw;
         position: relative;
-        animation: 1000ms ease-in-out;
-        animation-name: fadein, translate;
+        opacity: 0;
+
+        &.animated {
+            animation: 1000ms ease-in-out forwards;
+            animation-name: fadein, translate;
+        }
 
         &:hover .overlay {
             opacity: 1;

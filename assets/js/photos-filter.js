@@ -110,6 +110,14 @@
 
                 // Et en cas de réussite
                 $('.photos-wrapper').html(body.data['photos']); // Afficher le HTML
+
+                document.querySelectorAll('.single-photo').forEach(photo => {
+                    photoAnimation(photo);
+                    document.addEventListener("scroll", () => {
+                        photoAnimation(photo);
+                    })
+                });
+
                 if ( body.data['max-page'] < 2 ) {
                     $(".js-loadmore-photos").css('display', 'none');
                 } else {

@@ -40,6 +40,14 @@
 
                 // Et en cas de réussite
                 $('.photos-wrapper').append(body.data); // afficher le HTML
+
+                document.querySelectorAll('.single-photo').forEach(photo => {
+                    photoAnimation(photo);
+                    document.addEventListener("scroll", () => {
+                        photoAnimation(photo);
+                    })
+                });
+
                 let nextPage = $(this).data('nextpage') + 1;
                 if ( data['nextPage'] === data['maxPage'] ) { 
                     $(".js-loadmore-photos").css('display', 'none'); // if last page, remove the button
