@@ -1,21 +1,21 @@
 <?php
-add_action( 'wp_ajax_photos_filter', 'photos_filter' );
-add_action( 'wp_ajax_nopriv_photos_filter', 'photos_filter' );
+add_action('wp_ajax_photos_filter', 'photos_filter');
+add_action('wp_ajax_nopriv_photos_filter', 'photos_filter');
 
 function photos_filter() {
   
 	// Vérification de sécurité
-  	if( 
-		! isset( $_REQUEST['nonce'] ) or 
-       	! wp_verify_nonce( $_REQUEST['nonce'], 'photos_filter' ) 
+  	if(
+		! isset($_REQUEST['nonce']) or 
+       	! wp_verify_nonce($_REQUEST['nonce'], 'photos_filter') 
     ) {
-    	wp_send_json_error( "Vous n’avez pas l’autorisation d’effectuer cette action.", 403 );
+    	wp_send_json_error('Vous n’avez pas l’autorisation d’effectuer cette action.', 403);
   	}
 
   	// Utilisez sanitize_text_field() pour les chaines de caractères. 
-    $category = sanitize_text_field( $_POST['category'] );
-    $format = sanitize_text_field( $_POST['format'] );
-    $sort = sanitize_text_field( $_POST['sort'] );
+    $category = sanitize_text_field($_POST['category']);
+    $format = sanitize_text_field($_POST['format']);
+    $sort = sanitize_text_field($_POST['sort']);
 
   	// Requête des photos
     $photos_args = [
@@ -44,14 +44,14 @@ function photos_filter() {
         $photos_args['order'] = $sort;
     endif;
 
-    $photos_loop = new WP_Query( $photos_args );
+    $photos_loop = new WP_Query($photos_args);
 
   	// Préparer le HTML des photos
-    if ( $photos_loop->have_posts() ) :
+    if ($photos_loop->have_posts()) :
         ob_start();
-        while ( $photos_loop->have_posts() ) :
+        while ($photos_loop->have_posts()) :
             $photos_loop->the_post();
-            get_template_part( 'template-parts/photos-loop' );
+            get_template_part('template-parts/photos-loop');
         endwhile;
         wp_reset_postdata();
         wp_send_json_success(['photos' => ob_get_clean(), 'max-page' => $photos_loop->max_num_pages, 'query' => $photos_loop->query]); // Envoyer les données au navigateur

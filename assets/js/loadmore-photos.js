@@ -9,7 +9,7 @@
             // Empêcher l'envoi classique du formulaire
             e.preventDefault();
 
-            // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
+            // L'URL qui réceptionne les requêtes Ajax dans l'attribut 'action' de <form>
             const ajaxurl = $(this).data('ajaxurl');
 
             let data = {
@@ -25,7 +25,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Cache-Control': 'no-cache',
+                    'Cache-Control': 'no-cache'
                 },
                 body: new URLSearchParams(data),
             })
@@ -43,30 +43,28 @@
 
                 document.querySelectorAll('.single-photo').forEach(photo => {
                     photoAnimation(photo);
-                    document.addEventListener("scroll", () => {
+                    document.addEventListener('scroll', () => {
                         photoAnimation(photo);
                     })
                 });
 
                 let nextPage = $(this).data('nextpage') + 1;
-                if ( data['nextPage'] === data['maxPage'] ) { 
-                    $(".js-loadmore-photos").css('display', 'none'); // if last page, remove the button
+                if (data['nextPage'] === data['maxPage']) { 
+                    $('.js-loadmore-photos').css('display', 'none'); // if last page, remove the button
                 }
                 $(this).data('nextpage', nextPage);
                 let displayedPhotos = $('.single-photo').length;
                 let i = 0;
-                $(".js-lightbox").each(function () {
+                $('.js-lightbox').each(function () {
                     $(this).attr({
                         'data-nonce': nonce,
                         'data-query': data['query'],
                         'data-postsperpage': displayedPhotos,
-                        'data-currentphoto' :i
+                        'data-currentphoto': i
                     });
                     i++
-                })
-
-            })
-        })
-        
-    })
+                });
+            });
+        });
+    });
 })(jQuery);

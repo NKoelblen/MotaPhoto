@@ -6,7 +6,7 @@ function photoAnimation(element) {
 }
 document.querySelectorAll('.single-photo').forEach(photo => {
     photoAnimation(photo);
-    document.addEventListener("scroll", () => {
+    document.addEventListener('scroll', () => {
         photoAnimation(photo);
-    })
+    });
 });

@@ -45,10 +45,10 @@
             margin: 0;
             padding: 13px 0;
             &:before {
-                content: "contactcontact";
+                content: 'contactcontact';
             }
             &:after {
-                content: "contactcontactcontact";
+                content: 'contactcontactcontact';
                 display: block;
                 padding-top: 10px;
                 transform: translateX(40px);
@@ -120,8 +120,6 @@
             font-size: 34.239px;
             line-height: 24.92px;
             &:after {
-                content: "contactcontactcontact";
-                display: block;
                 padding-top: 5.16px;
                 transform: translateX(20.75px);
             }

@@ -2,11 +2,11 @@
     $(document).ready(function () {
 
         // Chargement des photos en Ajax
-        $(".photos-wrapper").on("click", ".js-lightbox", function( e ) {
+        $('.photos-wrapper').on('click', '.js-lightbox', function(e) {
 
             $('#lightbox').removeClass('close');
             $('#lightbox').addClass('open');
-            $('#lightbox .close-btn').click( function() {
+            $('#lightbox .close-btn').click(function() {
                 $('#lightbox').addClass('close');
                 $('#lightbox').removeClass('open');
             });
@@ -26,9 +26,8 @@
                 $('#lightbox .photo').html(slides[i]['photo'].clone());
                 $('#lightbox .entry-title').html(slides[i]['title']);
                 $('#lightbox .category').html(slides[i]['category']);
-
-                $("#lightbox .nav-link").on("click", function() {
-                	if ($(this).html() === $("#lightbox .nav-previous").html()) {
+                $('#lightbox .nav-link').on('click', function() {
+                	if ($(this).html() === $('#lightbox .nav-previous').html()) {
                 		if (i === 0) {
                 			i = nbSlides - 1;
                 		}
@@ -36,7 +35,7 @@
                 		i--;
                 		}
                 	}
-                	else if ($(this).html() === $("#lightbox .nav-next").html()) {
+                	else if ($(this).html() === $('#lightbox .nav-next').html()) {
                 		if (i === nbSlides - 1) {
                 			i = 0;
                 		} else {
@@ -47,11 +46,10 @@
                     $('#lightbox .photo-container').removeClass('animated');
                     window.requestAnimationFrame(function() {
                         $('#lightbox .photo-container').addClass('animated');
-                      });
+                    });
                     $('#lightbox .entry-title').html(slides[i]['title']);
                     $('#lightbox .category').html(slides[i]['category']);
                 });
-
             }
         });
     });

@@ -10,7 +10,7 @@
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 function theme_enqueue_styles()
 {
-	wp_enqueue_style( 'main-style', get_template_directory_uri() . '/style.css', array(), '');
+	wp_enqueue_style('main-style', get_template_directory_uri() . '/style.css', array(), '');
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
@@ -46,4 +46,3 @@ require_once MOTAPHOTO_DIR . 'inc/support.php';
 require_once MOTAPHOTO_DIR . 'inc/nav-menu.php';
 require_once MOTAPHOTO_DIR . 'inc/photos-filter.php';
 require_once MOTAPHOTO_DIR . 'inc/loadmore-photos.php';
-require_once MOTAPHOTO_DIR . 'inc/lightbox.php';

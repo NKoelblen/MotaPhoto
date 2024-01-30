@@ -6,31 +6,31 @@
  */
 
 		global $photos_loop; ?>
-		<div id="lightbox">
-			<button class="close-btn">
-		    	<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-close.svg'; ?> " alt="fermer la visionneuse de photo">
+		<div id='lightbox'>
+			<button class='close-btn'>
+		    	<img src='<?= get_template_directory_uri() . '/assets/images/lightbox-close.svg'; ?> ' alt='fermer la visionneuse de photo'>
 		    </button>
-		    <div class="nav-link nav-previous">
-		    	<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-prev.svg'; ?> " alt="photo précédente">
+		    <div class='nav-link nav-previous'>
+		    	<img src='<?= get_template_directory_uri() . '/assets/images/lightbox-prev.svg'; ?> ' alt='photo précédente'>
 		    	<span>Précédente</span>
 			</div>
-		    <div class="photo-container animated">
-				<div class="photo"></div>
-		    	<div class="informations">
+		    <div class='photo-container animated'>
+				<div class='photo'></div>
+		    	<div class='informations'>
 					<p class='entry-title'></p>
-					<p class="category"></p>
+					<p class='category'></p>
 				</div>
 		    </div>
-		    <div class="nav-link nav-next">
+		    <div class='nav-link nav-next'>
 		    	<span>Suivante</span>
-		    	<img src="<?= get_template_directory_uri() . '/assets/images/lightbox-next.svg'; ?> " alt="photo suivante">
+		    	<img src='<?= get_template_directory_uri() . '/assets/images/lightbox-next.svg'; ?> ' alt='photo suivante'>
 			</div>
 		</div>
     </main><!-- #main -->
 
-	<footer id="colophon" class="site-footer">
-			<nav class="footer-navigation">
-				<ul class="footer-navigation-wrapper">
+	<footer id='colophon' class='site-footer'>
+			<nav class='footer-navigation'>
+				<ul class='footer-navigation-wrapper'>
 					<?php
 					wp_nav_menu(
 						array(

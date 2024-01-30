@@ -389,8 +389,6 @@ button {
     line-height: 24.92px;
   }
   #contact-outer #contact-inner h2:after {
-    content: "contactcontactcontact";
-    display: block;
     padding-top: 5.16px;
     transform: translateX(20.75px);
   }
