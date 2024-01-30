@@ -746,6 +746,7 @@ body.single-photo #main .related-photos-container h2 {
   flex: 0 1 calc(50% - 10px);
   height: 34.38vw;
   position: relative;
+  animation: fadein 1000ms ease-in-out;
 }
 .photos-wrapper .single-photo:hover .overlay {
   opacity: 1;
