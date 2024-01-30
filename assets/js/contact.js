@@ -1,15 +1,15 @@
 const contactOuter = document.querySelector('#contact-outer');
 
 document.querySelectorAll('.contact-btn').forEach(button => {
-    button.addEventListener("click", () => {        
+    button.addEventListener("click", () => {   
+        contactOuter.classList.remove("close");     
         contactOuter.classList.add("open");
-        contactOuter.style.setProperty('display', 'flex', 'important');
     })
 }) 
 contactOuter.addEventListener("click", function(event) {
     if (!event.target.closest("#contact-inner")) {
         contactOuter.classList.remove("open");
-        contactOuter.style.setProperty('display', 'none', 'important');
+        contactOuter.classList.add("close");
     }
 })
 

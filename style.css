@@ -267,6 +267,7 @@ button {
   }
 }
 #contact-outer {
+  --display: flex;
   display: none;
   position: fixed;
   top: 0;
@@ -279,6 +280,14 @@ button {
   background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
+}
+#contact-outer.open {
+  display: var(--display);
+  animation: fadein 500ms ease-in-out forwards;
+}
+#contact-outer.close {
+  animation: fadeout 500ms ease-in-out forwards;
+  display: none;
 }
 #contact-outer #contact-inner {
   display: flex;
