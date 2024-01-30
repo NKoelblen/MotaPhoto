@@ -15,7 +15,7 @@
 		    	<span>Précédente</span>
 			</div>
 		    <div class="photo-container">
-				<div class="photo"></div>
+				<div class="photo animated"></div>
 		    	<div class="informations"></div>
 		    </div>
 		    <div class="nav-link nav-next">

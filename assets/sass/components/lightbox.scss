@@ -51,14 +51,19 @@
         justify-content: center;
 
         .photo {
-                width: fit-content;
-                height: fit-content;
+            display: none;
+            width: fit-content;
+            height: fit-content;
 
             .wp-post-image {
                 width: 100%;
                 height: fit-content;
                 max-height: calc(100vh - clamp(8px, 3.82vw, 55px) * 2 - 40px);
                 object-fit: contain;
+            }
+            &.animated {
+                display: inline-block;
+                animation: fadein 500ms ease-in-out;
             }
         }
         .informations {

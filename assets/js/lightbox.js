@@ -67,6 +67,11 @@
                 		}
                 	}
                     $('#lightbox .photo').html(slides[i]['photo']);
+                    $('#lightbox .photo').css('animation', 'fadein 500ms ease-in-out');
+                    $('#lightbox .photo').removeClass('animated');
+                    window.requestAnimationFrame(function() {
+                        $('#lightbox .photo').addClass('animated');
+                      });
                     $('#lightbox .informations').replaceWith(slides[i]['informations']);
                 });
             });
