@@ -1,70 +1,77 @@
 (function ($) {
-    $(document).ready(function () {
+	$(document).ready(function () {
+		// Get nonce for later
+		const nonce = $('.js-lightbox').attr('data-nonce');
 
-        const nonce = $('.js-lightbox').attr('data-nonce');
+		// On click on load more button...
+		$('.js-loadmore-photos').click(function (e) {
+			// ... Prevent classic submit form
+			e.preventDefault();
 
-        // Chargment des photos en Ajax
-        $('.js-loadmore-photos').click(function (e) {
+			// ... Get URL that receives Ajax requests
+			const ajaxurl = $(this).data('ajaxurl');
 
-            // Empêcher l'envoi classique du formulaire
-            e.preventDefault();
+			// ... Get datas to send
+			let data = {
+				action: $(this).data('action'),
+				nonce: $(this).data('nonce'),
+				query: JSON.stringify($(this).data('query')),
+				nextPage: $(this).data('nextpage'),
+				maxPage: $(this).data('maxpage'),
+			};
 
-            // L'URL qui réceptionne les requêtes Ajax dans l'attribut 'action' de <form>
-            const ajaxurl = $(this).data('ajaxurl');
+			// ... Send ajax request
+			fetch(ajaxurl, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+					'Cache-Control': 'no-cache',
+				},
+				body: new URLSearchParams(data),
+			})
+				.then((response) => response.json())
+				.then((body) => {
+					// If error response : ALERT !
+					if (!body.success) {
+						alert(response.data);
+						return;
+					}
 
-            let data = {
-                action: $(this).data('action'), 
-                nonce:  $(this).data('nonce'),
-                query: JSON.stringify($(this).data('query')),
-                nextPage: $(this).data('nextpage'),
-                maxPage: $(this).data('maxpage'),
-            }
+					// If success response ...
 
-            // Requête Ajax en JS natif via Fetch
-            fetch(ajaxurl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Cache-Control': 'no-cache'
-                },
-                body: new URLSearchParams(data),
-            })
-            .then(response => response.json())
-            .then(body => {
+					// ... Display Photos
+					$('.photos-wrapper').append(body.data);
 
-                // En cas d'erreur
-                if (!body.success) {
-                    alert(response.data);
-                    return;
-                }
+					// ... Animate Photos
+					document.querySelectorAll('.single-photo').forEach((photo) => {
+						photoAnimation(photo);
+						document.addEventListener('scroll', () => {
+							photoAnimation(photo);
+						});
+					});
 
-                // Et en cas de réussite
-                $('.photos-wrapper').append(body.data); // afficher le HTML
+					// ... If current page is the last page, remove load more button
+					if (data['nextPage'] === data['maxPage']) {
+						$('.js-loadmore-photos').css('display', 'none');
+					}
 
-                document.querySelectorAll('.single-photo').forEach(photo => {
-                    photoAnimation(photo);
-                    document.addEventListener('scroll', () => {
-                        photoAnimation(photo);
-                    })
-                });
+					// ... Update nextpage data
+					let nextPage = $(this).data('nextpage') + 1;
+					$(this).data('nextpage', nextPage);
 
-                let nextPage = $(this).data('nextpage') + 1;
-                if (data['nextPage'] === data['maxPage']) { 
-                    $('.js-loadmore-photos').css('display', 'none'); // if last page, remove the button
-                }
-                $(this).data('nextpage', nextPage);
-                let displayedPhotos = $('.single-photo').length;
-                let i = 0;
-                $('.js-lightbox').each(function () {
-                    $(this).attr({
-                        'data-nonce': nonce,
-                        'data-query': data['query'],
-                        'data-postsperpage': displayedPhotos,
-                        'data-currentphoto': i
-                    });
-                    i++
-                });
-            });
-        });
-    });
+					// ... Set lightbox datas
+					let displayedPhotos = $('.single-photo').length;
+					let i = 0;
+					$('.js-lightbox').each(function () {
+						$(this).attr({
+							'data-nonce': nonce,
+							'data-query': data['query'],
+							'data-postsperpage': displayedPhotos,
+							'data-currentphoto': i,
+						});
+						i++;
+					});
+				});
+		});
+	});
 })(jQuery);

@@ -5,10 +5,22 @@
 
 get_header();
 
-/* Start the Loop */
-while (have_posts()) :
-	the_post();
+while (have_posts()):
+	the_post(); ?>
 
-endwhile; // End of the loop.
+	<article id='post-<?php the_ID(); ?>' <?php post_class(); ?>>
+
+		<header class='entry-header alignwide'>
+			<?php the_title('<h1 class="entry-title">', '</h1>');
+			the_post_thumbnail('medium_large'); ?>
+		</header><!-- .entry-header -->
+
+		<div class='entry-content'>
+			<?php the_content(); ?>
+		</div><!-- .entry-content -->
+
+	</article>
+
+<?php endwhile;
 
 get_footer();
