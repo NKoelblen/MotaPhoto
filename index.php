@@ -119,7 +119,7 @@ get_header(); ?>
 
 		<?php $photos_args = [
 			'post_type' => 'photo',
-			'post_status' => 'published',
+			'post_status' => 'publish',
 			'orderby' => 'date',
 			'order' => 'ASC',
 			'posts_per_page' => '8'
@@ -153,7 +153,7 @@ get_header(); ?>
 	</section><!-- .photos-container -->
 
 
-<?php endif; // home || front_page  ?>
+<?php endif; // home || front_page   ?>
 
 
 <?php get_footer();

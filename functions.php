@@ -27,10 +27,12 @@ function theme_enqueue_scripts()
         wp_register_script('photos-filter-script', get_template_directory_uri() . '/assets/js/photos-filter.js', ['jquery'], false, true);
         wp_enqueue_script('photos-filter-script');
     endif;
-    wp_register_script('photos-loop-script', get_template_directory_uri() . '/assets/js/photos-loop.js', array(), false, true);
-    wp_enqueue_script('photos-loop-script');
-    wp_register_script('lightbox-script', get_template_directory_uri() . '/assets/js/lightbox.js', ['jquery'], false, true);
-    wp_enqueue_script('lightbox-script');
+    if (is_home() || is_singular('photo')):
+        wp_register_script('photos-loop-script', get_template_directory_uri() . '/assets/js/photos-loop.js', array(), false, true);
+        wp_enqueue_script('photos-loop-script');
+        wp_register_script('lightbox-script', get_template_directory_uri() . '/assets/js/lightbox.js', ['jquery'], false, true);
+        wp_enqueue_script('lightbox-script');
+    endif;
 }
 
 /**

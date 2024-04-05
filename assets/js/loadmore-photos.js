@@ -51,6 +51,7 @@
 					});
 
 					// ... If current page is the last page, remove load more button
+					console.log('nextPage: ' + data['nextPage'] + 'maxPage:' + data['maxPage']);
 					if (data['nextPage'] === data['maxPage']) {
 						$('.js-loadmore-photos').css('display', 'none');
 					}
